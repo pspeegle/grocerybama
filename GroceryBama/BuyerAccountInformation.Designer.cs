@@ -29,17 +29,14 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox11 = new System.Windows.Forms.TextBox();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textAddress = new System.Windows.Forms.TextBox();
+            this.textZip = new System.Windows.Forms.TextBox();
+            this.textPhone = new System.Windows.Forms.TextBox();
+            this.textState = new System.Windows.Forms.TextBox();
+            this.textCity = new System.Windows.Forms.TextBox();
+            this.textEmail = new System.Windows.Forms.TextBox();
+            this.textStoreAddress = new System.Windows.Forms.TextBox();
+            this.textPreferredStore = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -51,13 +48,16 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox12 = new System.Windows.Forms.TextBox();
-            this.textBox13 = new System.Windows.Forms.TextBox();
+            this.textCreditCardNumber = new System.Windows.Forms.TextBox();
+            this.textRoutingNumber = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.button7 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.textLastName = new System.Windows.Forms.TextBox();
+            this.textFirstName = new System.Windows.Forms.TextBox();
+            this.textUsername = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -70,93 +70,69 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "Buyer Account Information";
             // 
-            // textBox11
+            // textAddress
             // 
-            this.textBox11.Location = new System.Drawing.Point(378, 313);
-            this.textBox11.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(209, 22);
-            this.textBox11.TabIndex = 46;
+            this.textAddress.Location = new System.Drawing.Point(378, 313);
+            this.textAddress.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textAddress.Name = "textAddress";
+            this.textAddress.Size = new System.Drawing.Size(209, 22);
+            this.textAddress.TabIndex = 46;
             // 
-            // textBox10
+            // textZip
             // 
-            this.textBox10.Location = new System.Drawing.Point(378, 340);
-            this.textBox10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(209, 22);
-            this.textBox10.TabIndex = 45;
+            this.textZip.Location = new System.Drawing.Point(378, 340);
+            this.textZip.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textZip.Name = "textZip";
+            this.textZip.Size = new System.Drawing.Size(209, 22);
+            this.textZip.TabIndex = 45;
             // 
-            // textBox9
+            // textPhone
             // 
-            this.textBox9.Location = new System.Drawing.Point(378, 201);
-            this.textBox9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(209, 22);
-            this.textBox9.TabIndex = 44;
+            this.textPhone.Location = new System.Drawing.Point(378, 201);
+            this.textPhone.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textPhone.Name = "textPhone";
+            this.textPhone.Size = new System.Drawing.Size(209, 22);
+            this.textPhone.TabIndex = 44;
             // 
-            // textBox8
+            // textState
             // 
-            this.textBox8.Location = new System.Drawing.Point(378, 256);
-            this.textBox8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(209, 22);
-            this.textBox8.TabIndex = 43;
+            this.textState.Location = new System.Drawing.Point(378, 256);
+            this.textState.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textState.Name = "textState";
+            this.textState.Size = new System.Drawing.Size(209, 22);
+            this.textState.TabIndex = 43;
             // 
-            // textBox7
+            // textCity
             // 
-            this.textBox7.Location = new System.Drawing.Point(378, 284);
-            this.textBox7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(209, 22);
-            this.textBox7.TabIndex = 42;
+            this.textCity.Location = new System.Drawing.Point(378, 284);
+            this.textCity.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textCity.Name = "textCity";
+            this.textCity.Size = new System.Drawing.Size(209, 22);
+            this.textCity.TabIndex = 42;
             // 
-            // textBox6
+            // textEmail
             // 
-            this.textBox6.Location = new System.Drawing.Point(378, 228);
-            this.textBox6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(209, 22);
-            this.textBox6.TabIndex = 41;
+            this.textEmail.Location = new System.Drawing.Point(378, 228);
+            this.textEmail.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textEmail.Name = "textEmail";
+            this.textEmail.Size = new System.Drawing.Size(209, 22);
+            this.textEmail.TabIndex = 41;
             // 
-            // textBox5
+            // textStoreAddress
             // 
-            this.textBox5.Location = new System.Drawing.Point(378, 172);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(209, 22);
-            this.textBox5.TabIndex = 40;
+            this.textStoreAddress.Location = new System.Drawing.Point(378, 172);
+            this.textStoreAddress.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textStoreAddress.Name = "textStoreAddress";
+            this.textStoreAddress.Size = new System.Drawing.Size(209, 22);
+            this.textStoreAddress.TabIndex = 40;
             // 
-            // textBox4
+            // textPreferredStore
             // 
-            this.textBox4.Location = new System.Drawing.Point(378, 144);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(209, 22);
-            this.textBox4.TabIndex = 39;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(378, 116);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(209, 22);
-            this.textBox3.TabIndex = 38;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(378, 89);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(209, 22);
-            this.textBox2.TabIndex = 37;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(378, 60);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(209, 22);
-            this.textBox1.TabIndex = 36;
+            this.textPreferredStore.Location = new System.Drawing.Point(378, 144);
+            this.textPreferredStore.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textPreferredStore.Name = "textPreferredStore";
+            this.textPreferredStore.Size = new System.Drawing.Size(209, 22);
+            this.textPreferredStore.TabIndex = 39;
             // 
             // label12
             // 
@@ -268,21 +244,21 @@
             this.label2.TabIndex = 25;
             this.label2.Text = "Username";
             // 
-            // textBox12
+            // textCreditCardNumber
             // 
-            this.textBox12.Location = new System.Drawing.Point(378, 366);
-            this.textBox12.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(209, 22);
-            this.textBox12.TabIndex = 47;
+            this.textCreditCardNumber.Location = new System.Drawing.Point(378, 366);
+            this.textCreditCardNumber.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textCreditCardNumber.Name = "textCreditCardNumber";
+            this.textCreditCardNumber.Size = new System.Drawing.Size(209, 22);
+            this.textCreditCardNumber.TabIndex = 47;
             // 
-            // textBox13
+            // textRoutingNumber
             // 
-            this.textBox13.Location = new System.Drawing.Point(378, 392);
-            this.textBox13.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox13.Name = "textBox13";
-            this.textBox13.Size = new System.Drawing.Size(209, 22);
-            this.textBox13.TabIndex = 48;
+            this.textRoutingNumber.Location = new System.Drawing.Point(378, 392);
+            this.textRoutingNumber.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textRoutingNumber.Name = "textRoutingNumber";
+            this.textRoutingNumber.Size = new System.Drawing.Size(209, 22);
+            this.textRoutingNumber.TabIndex = 48;
             // 
             // label13
             // 
@@ -313,6 +289,7 @@
             this.button7.TabIndex = 51;
             this.button7.Text = "Back";
             this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // button1
             // 
@@ -334,6 +311,33 @@
             this.button2.Text = "Update";
             this.button2.UseVisualStyleBackColor = true;
             // 
+            // textLastName
+            // 
+            this.textLastName.Location = new System.Drawing.Point(378, 116);
+            this.textLastName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textLastName.Name = "textLastName";
+            this.textLastName.ReadOnly = true;
+            this.textLastName.Size = new System.Drawing.Size(209, 22);
+            this.textLastName.TabIndex = 38;
+            // 
+            // textFirstName
+            // 
+            this.textFirstName.Location = new System.Drawing.Point(378, 89);
+            this.textFirstName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textFirstName.Name = "textFirstName";
+            this.textFirstName.ReadOnly = true;
+            this.textFirstName.Size = new System.Drawing.Size(209, 22);
+            this.textFirstName.TabIndex = 37;
+            // 
+            // textUsername
+            // 
+            this.textUsername.Location = new System.Drawing.Point(378, 60);
+            this.textUsername.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textUsername.Name = "textUsername";
+            this.textUsername.ReadOnly = true;
+            this.textUsername.Size = new System.Drawing.Size(209, 22);
+            this.textUsername.TabIndex = 36;
+            // 
             // BuyerAccountInformation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -344,19 +348,19 @@
             this.Controls.Add(this.button7);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label13);
-            this.Controls.Add(this.textBox13);
-            this.Controls.Add(this.textBox12);
-            this.Controls.Add(this.textBox11);
-            this.Controls.Add(this.textBox10);
-            this.Controls.Add(this.textBox9);
-            this.Controls.Add(this.textBox8);
-            this.Controls.Add(this.textBox7);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textRoutingNumber);
+            this.Controls.Add(this.textCreditCardNumber);
+            this.Controls.Add(this.textAddress);
+            this.Controls.Add(this.textZip);
+            this.Controls.Add(this.textPhone);
+            this.Controls.Add(this.textState);
+            this.Controls.Add(this.textCity);
+            this.Controls.Add(this.textEmail);
+            this.Controls.Add(this.textStoreAddress);
+            this.Controls.Add(this.textPreferredStore);
+            this.Controls.Add(this.textLastName);
+            this.Controls.Add(this.textFirstName);
+            this.Controls.Add(this.textUsername);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
@@ -379,17 +383,14 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox11;
-        private System.Windows.Forms.TextBox textBox10;
-        private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textAddress;
+        private System.Windows.Forms.TextBox textZip;
+        private System.Windows.Forms.TextBox textPhone;
+        private System.Windows.Forms.TextBox textState;
+        private System.Windows.Forms.TextBox textCity;
+        private System.Windows.Forms.TextBox textEmail;
+        private System.Windows.Forms.TextBox textStoreAddress;
+        private System.Windows.Forms.TextBox textPreferredStore;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
@@ -401,12 +402,15 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox12;
-        private System.Windows.Forms.TextBox textBox13;
+        private System.Windows.Forms.TextBox textCreditCardNumber;
+        private System.Windows.Forms.TextBox textRoutingNumber;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox textLastName;
+        private System.Windows.Forms.TextBox textFirstName;
+        private System.Windows.Forms.TextBox textUsername;
     }
 }

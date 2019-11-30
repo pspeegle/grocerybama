@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="GroceryBamaModel2.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="GroceryBamaModel3.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ADDRESS">
           <Key>
             <PropertyRef Name="id" />
@@ -64,12 +64,9 @@ warning 6002: The table/view 'GroceryBama.dbo.DELIVERED_BY' does not have a prim
           <Property Name="wholesale_price" Type="float" Nullable="false" />
           <Property Name="description" Type="varchar" MaxLength="255" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'GroceryBama.dbo.MANAGES' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="MANAGES">
           <Key>
             <PropertyRef Name="username" />
-            <PropertyRef Name="store_address" />
           </Key>
           <Property Name="username" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="store_address" Type="int" Nullable="false" />
@@ -234,7 +231,7 @@ warning 6002: The table/view 'GroceryBama.dbo.SOLDAT' does not have a primary ke
         </Association>
         <Association Name="FK__MANAGES__usernam__2C3393D0">
           <End Role="USER" Type="Self.USER" Multiplicity="1" />
-          <End Role="MANAGES" Type="Self.MANAGES" Multiplicity="*" />
+          <End Role="MANAGES" Type="Self.MANAGES" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="USER">
               <PropertyRef Name="username" />
@@ -328,11 +325,12 @@ warning 6002: The table/view 'GroceryBama.dbo.SOLDAT' does not have a primary ke
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="GroceryBamaModel2StoreContainer">
+        <EntityContainer Name="GroceryBamaModel3StoreContainer">
           <EntitySet Name="ADDRESS" EntityType="Self.ADDRESS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BUYER" EntityType="Self.BUYER" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GROCERYSTORE" EntityType="Self.GROCERYSTORE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ITEM" EntityType="Self.ITEM" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MANAGES" EntityType="Self.MANAGES" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ORDERR" EntityType="Self.ORDERR" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SYSTEMINFORMATION" EntityType="Self.SYSTEMINFORMATION" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="USER" EntityType="Self.USER" Schema="dbo" store:Type="Tables" />
@@ -344,12 +342,6 @@ warning 6002: The table/view 'GroceryBama.dbo.SOLDAT' does not have a primary ke
     [DELIVERED_BY].[delivery_time] AS [delivery_time], 
     [DELIVERED_BY].[delivery_date] AS [delivery_date]
     FROM [dbo].[DELIVERED_BY] AS [DELIVERED_BY]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="MANAGES" EntityType="Self.MANAGES" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [MANAGES].[username] AS [username], 
-    [MANAGES].[store_address] AS [store_address]
-    FROM [dbo].[MANAGES] AS [MANAGES]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="ORDERED_BY" EntityType="Self.ORDERED_BY" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -445,7 +437,7 @@ warning 6002: The table/view 'GroceryBama.dbo.SOLDAT' does not have a primary ke
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="GroceryBamaModel2" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="GroceryBamaModel3" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="ADDRESS">
           <Key>
             <PropertyRef Name="id" />
@@ -502,6 +494,14 @@ warning 6002: The table/view 'GroceryBama.dbo.SOLDAT' does not have a primary ke
           <NavigationProperty Name="SELECTITEM" Relationship="Self.FK__SELECTITE__item___3D5E1FD2" FromRole="ITEM" ToRole="SELECTITEM" />
           <NavigationProperty Name="GROCERYSTORE" Relationship="Self.SOLDAT" FromRole="ITEM" ToRole="GROCERYSTORE" />
         </EntityType>
+        <EntityType Name="MANAGES">
+          <Key>
+            <PropertyRef Name="username" />
+          </Key>
+          <Property Name="username" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="store_address" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="USER" Relationship="Self.FK__MANAGES__usernam__2C3393D0" FromRole="MANAGES" ToRole="USER" />
+        </EntityType>
         <EntityType Name="ORDERR">
           <Key>
             <PropertyRef Name="order_id" />
@@ -533,8 +533,8 @@ warning 6002: The table/view 'GroceryBama.dbo.SOLDAT' does not have a primary ke
           <Property Name="first_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="last_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="BUYER" Relationship="Self.FK__BUYER__username__2F10007B" FromRole="USER" ToRole="BUYER" />
-          <NavigationProperty Name="DELIVERED_BY" Relationship="Self.FK__DELIVERED__deliv__45F365D3" FromRole="USER" ToRole="DELIVERED_BY" />
           <NavigationProperty Name="MANAGES" Relationship="Self.FK__MANAGES__usernam__2C3393D0" FromRole="USER" ToRole="MANAGES" />
+          <NavigationProperty Name="DELIVERED_BY" Relationship="Self.FK__DELIVERED__deliv__45F365D3" FromRole="USER" ToRole="DELIVERED_BY" />
           <NavigationProperty Name="ORDERR" Relationship="Self.ORDERED_BY" FromRole="USER" ToRole="ORDERR" />
         </EntityType>
         <EntityType Name="DELIVERED_BY">
@@ -550,15 +550,6 @@ warning 6002: The table/view 'GroceryBama.dbo.SOLDAT' does not have a primary ke
           <Property Name="delivery_date" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="ORDERR" Relationship="Self.FK__DELIVERED__order__44FF419A" FromRole="DELIVERED_BY" ToRole="ORDERR" />
           <NavigationProperty Name="USER" Relationship="Self.FK__DELIVERED__deliv__45F365D3" FromRole="DELIVERED_BY" ToRole="USER" />
-        </EntityType>
-        <EntityType Name="MANAGES">
-          <Key>
-            <PropertyRef Name="username" />
-            <PropertyRef Name="store_address" />
-          </Key>
-          <Property Name="username" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="store_address" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="USER" Relationship="Self.FK__MANAGES__usernam__2C3393D0" FromRole="MANAGES" ToRole="USER" />
         </EntityType>
         <EntityType Name="ORDERFROM">
           <Key>
@@ -667,6 +658,18 @@ warning 6002: The table/view 'GroceryBama.dbo.SOLDAT' does not have a primary ke
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__MANAGES__usernam__2C3393D0">
+          <End Role="USER" Type="Self.USER" Multiplicity="1" />
+          <End Role="MANAGES" Type="Self.MANAGES" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="USER">
+              <PropertyRef Name="username" />
+            </Principal>
+            <Dependent Role="MANAGES">
+              <PropertyRef Name="username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__DELIVERED__order__44FF419A">
           <End Role="ORDERR" Type="Self.ORDERR" Multiplicity="1" />
           <End Role="DELIVERED_BY" Type="Self.DELIVERED_BY" Multiplicity="*" />
@@ -703,18 +706,6 @@ warning 6002: The table/view 'GroceryBama.dbo.SOLDAT' does not have a primary ke
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__MANAGES__usernam__2C3393D0">
-          <End Role="USER" Type="Self.USER" Multiplicity="1" />
-          <End Role="MANAGES" Type="Self.MANAGES" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="USER">
-              <PropertyRef Name="username" />
-            </Principal>
-            <Dependent Role="MANAGES">
-              <PropertyRef Name="username" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="ORDERED_BY">
           <End Role="USER" Type="Self.USER" Multiplicity="*" />
           <End Role="ORDERR" Type="Self.ORDERR" Multiplicity="*" />
@@ -723,16 +714,16 @@ warning 6002: The table/view 'GroceryBama.dbo.SOLDAT' does not have a primary ke
           <End Role="ITEM" Type="Self.ITEM" Multiplicity="*" />
           <End Role="GROCERYSTORE" Type="Self.GROCERYSTORE" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="GroceryBamaEntities2" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="GroceryBamaEntities3" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="ADDRESS" EntityType="Self.ADDRESS" />
           <EntitySet Name="BUYER" EntityType="Self.BUYER" />
           <EntitySet Name="GROCERYSTORE" EntityType="Self.GROCERYSTORE" />
           <EntitySet Name="ITEM" EntityType="Self.ITEM" />
+          <EntitySet Name="MANAGES" EntityType="Self.MANAGES" />
           <EntitySet Name="ORDERR" EntityType="Self.ORDERR" />
           <EntitySet Name="SYSTEMINFORMATION" EntityType="Self.SYSTEMINFORMATION" />
           <EntitySet Name="USER" EntityType="Self.USER" />
           <EntitySet Name="DELIVERED_BY" EntityType="Self.DELIVERED_BY" />
-          <EntitySet Name="MANAGES" EntityType="Self.MANAGES" />
           <EntitySet Name="ORDERFROM" EntityType="Self.ORDERFROM" />
           <EntitySet Name="PAYMENT" EntityType="Self.PAYMENT" />
           <EntitySet Name="SELECTITEM" EntityType="Self.SELECTITEM" />
@@ -760,6 +751,10 @@ warning 6002: The table/view 'GroceryBama.dbo.SOLDAT' does not have a primary ke
             <End Role="ITEM" EntitySet="ITEM" />
             <End Role="SELECTITEM" EntitySet="SELECTITEM" />
           </AssociationSet>
+          <AssociationSet Name="FK__MANAGES__usernam__2C3393D0" Association="Self.FK__MANAGES__usernam__2C3393D0">
+            <End Role="USER" EntitySet="USER" />
+            <End Role="MANAGES" EntitySet="MANAGES" />
+          </AssociationSet>
           <AssociationSet Name="FK__DELIVERED__order__44FF419A" Association="Self.FK__DELIVERED__order__44FF419A">
             <End Role="ORDERR" EntitySet="ORDERR" />
             <End Role="DELIVERED_BY" EntitySet="DELIVERED_BY" />
@@ -771,10 +766,6 @@ warning 6002: The table/view 'GroceryBama.dbo.SOLDAT' does not have a primary ke
           <AssociationSet Name="FK__DELIVERED__deliv__45F365D3" Association="Self.FK__DELIVERED__deliv__45F365D3">
             <End Role="USER" EntitySet="USER" />
             <End Role="DELIVERED_BY" EntitySet="DELIVERED_BY" />
-          </AssociationSet>
-          <AssociationSet Name="FK__MANAGES__usernam__2C3393D0" Association="Self.FK__MANAGES__usernam__2C3393D0">
-            <End Role="USER" EntitySet="USER" />
-            <End Role="MANAGES" EntitySet="MANAGES" />
           </AssociationSet>
           <AssociationSet Name="ORDERED_BY" Association="Self.ORDERED_BY">
             <End Role="USER" EntitySet="USER" />
@@ -790,9 +781,9 @@ warning 6002: The table/view 'GroceryBama.dbo.SOLDAT' does not have a primary ke
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="GroceryBamaModel2StoreContainer" CdmEntityContainer="GroceryBamaEntities2">
+        <EntityContainerMapping StorageEntityContainer="GroceryBamaModel3StoreContainer" CdmEntityContainer="GroceryBamaEntities3">
           <EntitySetMapping Name="ADDRESS">
-            <EntityTypeMapping TypeName="GroceryBamaModel2.ADDRESS">
+            <EntityTypeMapping TypeName="GroceryBamaModel3.ADDRESS">
               <MappingFragment StoreEntitySet="ADDRESS">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="house_number" ColumnName="house_number" />
@@ -804,7 +795,7 @@ warning 6002: The table/view 'GroceryBama.dbo.SOLDAT' does not have a primary ke
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="BUYER">
-            <EntityTypeMapping TypeName="GroceryBamaModel2.BUYER">
+            <EntityTypeMapping TypeName="GroceryBamaModel3.BUYER">
               <MappingFragment StoreEntitySet="BUYER">
                 <ScalarProperty Name="username" ColumnName="username" />
                 <ScalarProperty Name="phone" ColumnName="phone" />
@@ -815,7 +806,7 @@ warning 6002: The table/view 'GroceryBama.dbo.SOLDAT' does not have a primary ke
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="GROCERYSTORE">
-            <EntityTypeMapping TypeName="GroceryBamaModel2.GROCERYSTORE">
+            <EntityTypeMapping TypeName="GroceryBamaModel3.GROCERYSTORE">
               <MappingFragment StoreEntitySet="GROCERYSTORE">
                 <ScalarProperty Name="store_id" ColumnName="store_id" />
                 <ScalarProperty Name="store_name" ColumnName="store_name" />
@@ -827,7 +818,7 @@ warning 6002: The table/view 'GroceryBama.dbo.SOLDAT' does not have a primary ke
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ITEM">
-            <EntityTypeMapping TypeName="GroceryBamaModel2.ITEM">
+            <EntityTypeMapping TypeName="GroceryBamaModel3.ITEM">
               <MappingFragment StoreEntitySet="ITEM">
                 <ScalarProperty Name="item_id" ColumnName="item_id" />
                 <ScalarProperty Name="item_name" ColumnName="item_name" />
@@ -840,8 +831,16 @@ warning 6002: The table/view 'GroceryBama.dbo.SOLDAT' does not have a primary ke
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="MANAGES">
+            <EntityTypeMapping TypeName="GroceryBamaModel3.MANAGES">
+              <MappingFragment StoreEntitySet="MANAGES">
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="store_address" ColumnName="store_address" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="ORDERR">
-            <EntityTypeMapping TypeName="GroceryBamaModel2.ORDERR">
+            <EntityTypeMapping TypeName="GroceryBamaModel3.ORDERR">
               <MappingFragment StoreEntitySet="ORDERR">
                 <ScalarProperty Name="order_id" ColumnName="order_id" />
                 <ScalarProperty Name="delivery_instructions" ColumnName="delivery_instructions" />
@@ -852,7 +851,7 @@ warning 6002: The table/view 'GroceryBama.dbo.SOLDAT' does not have a primary ke
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SYSTEMINFORMATION">
-            <EntityTypeMapping TypeName="GroceryBamaModel2.SYSTEMINFORMATION">
+            <EntityTypeMapping TypeName="GroceryBamaModel3.SYSTEMINFORMATION">
               <MappingFragment StoreEntitySet="SYSTEMINFORMATION">
                 <ScalarProperty Name="system_id" ColumnName="system_id" />
                 <ScalarProperty Name="user_codes" ColumnName="user_codes" />
@@ -860,7 +859,7 @@ warning 6002: The table/view 'GroceryBama.dbo.SOLDAT' does not have a primary ke
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="USER">
-            <EntityTypeMapping TypeName="GroceryBamaModel2.USER">
+            <EntityTypeMapping TypeName="GroceryBamaModel3.USER">
               <MappingFragment StoreEntitySet="USER">
                 <ScalarProperty Name="username" ColumnName="username" />
                 <ScalarProperty Name="password" ColumnName="password" />
@@ -872,7 +871,7 @@ warning 6002: The table/view 'GroceryBama.dbo.SOLDAT' does not have a primary ke
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="DELIVERED_BY">
-            <EntityTypeMapping TypeName="GroceryBamaModel2.DELIVERED_BY">
+            <EntityTypeMapping TypeName="GroceryBamaModel3.DELIVERED_BY">
               <MappingFragment StoreEntitySet="DELIVERED_BY">
                 <ScalarProperty Name="order_id" ColumnName="order_id" />
                 <ScalarProperty Name="deliverer_username" ColumnName="deliverer_username" />
@@ -882,16 +881,8 @@ warning 6002: The table/view 'GroceryBama.dbo.SOLDAT' does not have a primary ke
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="MANAGES">
-            <EntityTypeMapping TypeName="GroceryBamaModel2.MANAGES">
-              <MappingFragment StoreEntitySet="MANAGES">
-                <ScalarProperty Name="username" ColumnName="username" />
-                <ScalarProperty Name="store_address" ColumnName="store_address" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="ORDERFROM">
-            <EntityTypeMapping TypeName="GroceryBamaModel2.ORDERFROM">
+            <EntityTypeMapping TypeName="GroceryBamaModel3.ORDERFROM">
               <MappingFragment StoreEntitySet="ORDERFROM">
                 <ScalarProperty Name="store_address" ColumnName="store_address" />
                 <ScalarProperty Name="order_id" ColumnName="order_id" />
@@ -899,7 +890,7 @@ warning 6002: The table/view 'GroceryBama.dbo.SOLDAT' does not have a primary ke
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PAYMENT">
-            <EntityTypeMapping TypeName="GroceryBamaModel2.PAYMENT">
+            <EntityTypeMapping TypeName="GroceryBamaModel3.PAYMENT">
               <MappingFragment StoreEntitySet="PAYMENT">
                 <ScalarProperty Name="username" ColumnName="username" />
                 <ScalarProperty Name="payment_name" ColumnName="payment_name" />
@@ -909,7 +900,7 @@ warning 6002: The table/view 'GroceryBama.dbo.SOLDAT' does not have a primary ke
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SELECTITEM">
-            <EntityTypeMapping TypeName="GroceryBamaModel2.SELECTITEM">
+            <EntityTypeMapping TypeName="GroceryBamaModel3.SELECTITEM">
               <MappingFragment StoreEntitySet="SELECTITEM">
                 <ScalarProperty Name="item_id" ColumnName="item_id" />
                 <ScalarProperty Name="quantity" ColumnName="quantity" />
@@ -917,7 +908,7 @@ warning 6002: The table/view 'GroceryBama.dbo.SOLDAT' does not have a primary ke
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="ORDERED_BY" TypeName="GroceryBamaModel2.ORDERED_BY" StoreEntitySet="ORDERED_BY">
+          <AssociationSetMapping Name="ORDERED_BY" TypeName="GroceryBamaModel3.ORDERED_BY" StoreEntitySet="ORDERED_BY">
             <EndProperty Name="USER">
               <ScalarProperty Name="username" ColumnName="buyer_username" />
             </EndProperty>
@@ -925,7 +916,7 @@ warning 6002: The table/view 'GroceryBama.dbo.SOLDAT' does not have a primary ke
               <ScalarProperty Name="order_id" ColumnName="order_id" />
             </EndProperty>
           </AssociationSetMapping>
-          <AssociationSetMapping Name="SOLDAT" TypeName="GroceryBamaModel2.SOLDAT" StoreEntitySet="SOLDAT">
+          <AssociationSetMapping Name="SOLDAT" TypeName="GroceryBamaModel3.SOLDAT" StoreEntitySet="SOLDAT">
             <EndProperty Name="ITEM">
               <ScalarProperty Name="item_id" ColumnName="item_id" />
             </EndProperty>

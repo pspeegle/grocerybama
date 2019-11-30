@@ -18,7 +18,6 @@ namespace GroceryBama
         public USER()
         {
             this.DELIVERED_BY = new HashSet<DELIVERED_BY>();
-            this.MANAGES = new HashSet<MANAGES>();
             this.ORDERR = new HashSet<ORDERR>();
         }
     
@@ -30,10 +29,9 @@ namespace GroceryBama
         public string last_name { get; set; }
     
         public virtual BUYER BUYER { get; set; }
+        public virtual MANAGES MANAGES { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DELIVERED_BY> DELIVERED_BY { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MANAGES> MANAGES { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ORDERR> ORDERR { get; set; }
     }

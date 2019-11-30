@@ -13,10 +13,10 @@ namespace GroceryBama
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class GroceryBamaEntities2 : DbContext
+    public partial class GroceryBamaEntities3 : DbContext
     {
-        public GroceryBamaEntities2()
-            : base("name=GroceryBamaEntities2")
+        public GroceryBamaEntities3()
+            : base("name=GroceryBamaEntities3")
         {
         }
     
@@ -29,11 +29,11 @@ namespace GroceryBama
         public virtual DbSet<BUYER> BUYER { get; set; }
         public virtual DbSet<GROCERYSTORE> GROCERYSTORE { get; set; }
         public virtual DbSet<ITEM> ITEM { get; set; }
+        public virtual DbSet<MANAGES> MANAGES { get; set; }
         public virtual DbSet<ORDERR> ORDERR { get; set; }
         public virtual DbSet<SYSTEMINFORMATION> SYSTEMINFORMATION { get; set; }
         public virtual DbSet<USER> USER { get; set; }
         public virtual DbSet<DELIVERED_BY> DELIVERED_BY { get; set; }
-        public virtual DbSet<MANAGES> MANAGES { get; set; }
         public virtual DbSet<ORDERFROM> ORDERFROM { get; set; }
         public virtual DbSet<PAYMENT> PAYMENT { get; set; }
         public virtual DbSet<SELECTITEM> SELECTITEM { get; set; }

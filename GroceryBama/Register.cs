@@ -19,8 +19,8 @@ namespace GroceryBama
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //Buyer form = new Buyer();
-            //form.ShowDialog();
+            RegisterBuyer form = new RegisterBuyer();
+            form.ShowDialog();
         }
 
         private void button2_Click(object sender, EventArgs e)
