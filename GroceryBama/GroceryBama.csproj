@@ -137,6 +137,12 @@
     <Compile Include="ListItems.Designer.cs">
       <DependentUpon>ListItems.cs</DependentUpon>
     </Compile>
+    <Compile Include="ListMyItems.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListMyItems.Designer.cs">
+      <DependentUpon>ListMyItems.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -240,6 +246,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ListItems.resx">
       <DependentUpon>ListItems.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListMyItems.resx">
+      <DependentUpon>ListMyItems.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>

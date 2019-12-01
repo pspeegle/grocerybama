@@ -54,5 +54,11 @@ namespace GroceryBama
             PaymentMethods form = new PaymentMethods();
             form.ShowDialog();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            OrderHistory form = new OrderHistory();
+            form.ShowDialog();
+        }
     }
 }

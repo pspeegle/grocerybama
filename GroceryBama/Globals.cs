@@ -18,6 +18,7 @@ namespace GroceryBama
         private static string preferred_routing;
         private static string chosen_item_lookup;
         private static string payment_name_used;
+        public static string current_order;
         public static bool has_deleted;
         public static List<ITEM> cart = new List<ITEM>();
 

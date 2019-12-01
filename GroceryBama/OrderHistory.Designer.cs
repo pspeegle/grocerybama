@@ -28,70 +28,135 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.button_order_name = new System.Windows.Forms.Button();
+            this.comboSelect = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.button_order_details = new System.Windows.Forms.Button();
+            this.button_back = new System.Windows.Forms.Button();
+            this.button_next = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textAll = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.button_order_date = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // label1
+            // button_order_name
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(303, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(195, 32);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Order History";
+            this.button_order_name.Location = new System.Drawing.Point(17, 360);
+            this.button_order_name.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button_order_name.Name = "button_order_name";
+            this.button_order_name.Size = new System.Drawing.Size(107, 49);
+            this.button_order_name.TabIndex = 69;
+            this.button_order_name.Text = "Order By Name";
+            this.button_order_name.UseVisualStyleBackColor = true;
+            this.button_order_name.Click += new System.EventHandler(this.button_order_name_Click);
             // 
-            // button3
+            // comboSelect
             // 
-            this.button3.Location = new System.Drawing.Point(12, 390);
-            this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(107, 49);
-            this.button3.TabIndex = 60;
-            this.button3.Text = "Back";
-            this.button3.UseVisualStyleBackColor = true;
+            this.comboSelect.FormattingEnabled = true;
+            this.comboSelect.Location = new System.Drawing.Point(473, 360);
+            this.comboSelect.Name = "comboSelect";
+            this.comboSelect.Size = new System.Drawing.Size(121, 24);
+            this.comboSelect.TabIndex = 68;
             // 
-            // button1
+            // label2
             // 
-            this.button1.Location = new System.Drawing.Point(413, 390);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(107, 49);
-            this.button1.TabIndex = 59;
-            this.button1.Text = "Next";
-            this.button1.UseVisualStyleBackColor = true;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(378, 363);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(96, 17);
+            this.label2.TabIndex = 67;
+            this.label2.Text = "Select Order: ";
+            // 
+            // button_order_details
+            // 
+            this.button_order_details.Location = new System.Drawing.Point(869, 497);
+            this.button_order_details.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button_order_details.Name = "button_order_details";
+            this.button_order_details.Size = new System.Drawing.Size(107, 49);
+            this.button_order_details.TabIndex = 66;
+            this.button_order_details.Text = "Order Details";
+            this.button_order_details.UseVisualStyleBackColor = true;
+            this.button_order_details.Click += new System.EventHandler(this.button_order_details_Click);
+            // 
+            // button_back
+            // 
+            this.button_back.Location = new System.Drawing.Point(17, 497);
+            this.button_back.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button_back.Name = "button_back";
+            this.button_back.Size = new System.Drawing.Size(107, 49);
+            this.button_back.TabIndex = 65;
+            this.button_back.Text = "Back";
+            this.button_back.UseVisualStyleBackColor = true;
+            this.button_back.Click += new System.EventHandler(this.button_back_Click);
+            // 
+            // button_next
+            // 
+            this.button_next.Location = new System.Drawing.Point(511, 497);
+            this.button_next.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button_next.Name = "button_next";
+            this.button_next.Size = new System.Drawing.Size(107, 49);
+            this.button_next.TabIndex = 64;
+            this.button_next.Text = "Next";
+            this.button_next.UseVisualStyleBackColor = true;
+            this.button_next.Click += new System.EventHandler(this.button_next_Click);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(251, 390);
+            this.button2.Location = new System.Drawing.Point(364, 497);
             this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(107, 49);
-            this.button2.TabIndex = 58;
+            this.button2.TabIndex = 63;
             this.button2.Text = "Previous";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // textBox1
+            // textAll
             // 
-            this.textBox1.Location = new System.Drawing.Point(56, 54);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 22);
-            this.textBox1.TabIndex = 57;
+            this.textAll.Location = new System.Drawing.Point(17, 55);
+            this.textAll.Multiline = true;
+            this.textAll.Name = "textAll";
+            this.textAll.ReadOnly = true;
+            this.textAll.Size = new System.Drawing.Size(959, 288);
+            this.textAll.TabIndex = 62;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(399, 10);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(195, 32);
+            this.label3.TabIndex = 61;
+            this.label3.Text = "Order History";
+            // 
+            // button_order_date
+            // 
+            this.button_order_date.Location = new System.Drawing.Point(869, 363);
+            this.button_order_date.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button_order_date.Name = "button_order_date";
+            this.button_order_date.Size = new System.Drawing.Size(107, 49);
+            this.button_order_date.TabIndex = 70;
+            this.button_order_date.Text = "Order By Date";
+            this.button_order_date.UseVisualStyleBackColor = true;
+            this.button_order_date.Click += new System.EventHandler(this.button_order_date_Click);
             // 
             // OrderHistory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(993, 556);
+            this.Controls.Add(this.button_order_date);
+            this.Controls.Add(this.button_order_name);
+            this.Controls.Add(this.comboSelect);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.button_order_details);
+            this.Controls.Add(this.button_back);
+            this.Controls.Add(this.button_next);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.textAll);
+            this.Controls.Add(this.label3);
             this.Name = "OrderHistory";
             this.Text = "OrderHistory";
             this.ResumeLayout(false);
@@ -101,10 +166,15 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button_order_name;
+        private System.Windows.Forms.ComboBox comboSelect;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button button_order_details;
+        private System.Windows.Forms.Button button_back;
+        private System.Windows.Forms.Button button_next;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textAll;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button button_order_date;
     }
 }

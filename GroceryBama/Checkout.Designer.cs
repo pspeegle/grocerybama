@@ -40,6 +40,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.textDeliveryInstructions = new System.Windows.Forms.TextBox();
             this.button_new_payment = new System.Windows.Forms.Button();
+            this.btn_refresh = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button_finalize
@@ -62,6 +63,7 @@
             this.button_back.TabIndex = 62;
             this.button_back.Text = "Back";
             this.button_back.UseVisualStyleBackColor = true;
+            this.button_back.Click += new System.EventHandler(this.button_back_Click);
             // 
             // label1
             // 
@@ -163,11 +165,23 @@
             this.button_new_payment.UseVisualStyleBackColor = true;
             this.button_new_payment.Click += new System.EventHandler(this.button_new_payment_Click);
             // 
+            // btn_refresh
+            // 
+            this.btn_refresh.Location = new System.Drawing.Point(46, 144);
+            this.btn_refresh.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_refresh.Name = "btn_refresh";
+            this.btn_refresh.Size = new System.Drawing.Size(192, 32);
+            this.btn_refresh.TabIndex = 74;
+            this.btn_refresh.Text = "Refresh Payments";
+            this.btn_refresh.UseVisualStyleBackColor = true;
+            this.btn_refresh.Click += new System.EventHandler(this.btn_refresh_Click);
+            // 
             // Checkout
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btn_refresh);
             this.Controls.Add(this.button_new_payment);
             this.Controls.Add(this.textDeliveryInstructions);
             this.Controls.Add(this.label5);
@@ -200,5 +214,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textDeliveryInstructions;
         private System.Windows.Forms.Button button_new_payment;
+        private System.Windows.Forms.Button btn_refresh;
     }
 }

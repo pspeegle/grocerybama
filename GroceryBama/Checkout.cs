@@ -16,6 +16,8 @@ namespace GroceryBama
     {
         List<PAYMENT> payments = new List<PAYMENT>();
         List<int> order_ids = new List<int>();
+        List<USER> deliverers = new List<USER>();
+        USER persistent_deliverer = new USER();
         int orderId = 0;
         int totalItems = 0;
         public Checkout()
@@ -42,6 +44,7 @@ namespace GroceryBama
                 MessageBox.Show("Please enter a payment type.");
                 return;
             }
+            persistent_deliverer = deliverers.OrderBy(x => Guid.NewGuid()).FirstOrDefault();
             string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["Default"].ConnectionString;
             using (SqlConnection _con = new SqlConnection(connectionString))
             {
@@ -71,7 +74,7 @@ namespace GroceryBama
                 using (SqlCommand command = new SqlCommand(query, _con))
                 {
                     command.Parameters.Add("@order_id", SqlDbType.Int).Value = orderId;
-                    command.Parameters.Add("@store_id", SqlDbType.Int).Value = Globals.Chosen_Store.address_id;
+                    command.Parameters.Add("@store_id", SqlDbType.Int).Value = Globals.Chosen_Store.store_id;
                     _con.Open();
                     int result = command.ExecuteNonQuery();
                     _con.Close();
@@ -92,7 +95,19 @@ namespace GroceryBama
                     if (result < 0)
                         MessageBox.Show("There was an error.");
                 }
-                foreach(var item in Globals.cart)
+                query = "INSERT INTO [GROCERYBAMA1].[dbo].[DELIVEREDBY] VALUES (@order_id, @deliverer_username, '0', NULL, NULL);";
+                using (SqlCommand command = new SqlCommand(query, _con))
+                {
+                    command.Parameters.Add("@order_id", SqlDbType.Int).Value = orderId;
+                    command.Parameters.Add("@deliverer_username", SqlDbType.VarChar).Value = persistent_deliverer.username;
+                    _con.Open();
+                    int result = command.ExecuteNonQuery();
+                    _con.Close();
+
+                    if (result < 0)
+                        MessageBox.Show("There was an error.");
+                }
+                foreach (var item in Globals.cart)
                 {
                     query = "INSERT INTO [GROCERYBAMA1].[dbo].[SELECTITEM] VALUES (@item_id, @quantity, @order_id);";
                     using (SqlCommand command = new SqlCommand(query, _con))
@@ -109,8 +124,8 @@ namespace GroceryBama
                             MessageBox.Show("There was an error.");
                     }
                 }
-                string receipt = "Order successfully submitted. Here is your receipt.\nOrder Number: " + orderId +"\nPayment Name: " + comboPaymentType.Text
-                    + "\nDeliverer's Name: \nNumber of Items: " + totalItems + "\nTime Order Placed: " + DateTime.Now.ToString("HH:mm") + "\nTime of Delivery: " + comboDeliveryTime.Text;
+                string receipt = "Order successfully submitted. Here is your receipt.\n\nOrder Number: " + orderId +"\nPayment Name: " + comboPaymentType.Text
+                    + "\nDeliverer's Name: " + persistent_deliverer.first_name + "\nNumber of Items: " + totalItems + "\nTime Order Placed: " + DateTime.Now.ToString("HH:mm") + "\nTime of Delivery: " + comboDeliveryTime.Text;
                 MessageBox.Show(receipt);
                 Globals.cart.Clear();
                 this.Close();
@@ -164,6 +179,28 @@ namespace GroceryBama
                         order_ids.Add(temp_id);
                     }
                 }
+                queryStatement = "SELECT * FROM [GROCERYBAMA1].[dbo].[user] where user_type = 'deliverer'";
+                using (SqlCommand _cmd = new SqlCommand(queryStatement, _con))
+                {
+                    DataTable tb = new DataTable();
+
+                    SqlDataAdapter _dap = new SqlDataAdapter(_cmd);
+
+                    _con.Open();
+                    _dap.Fill(tb);
+                    _con.Close();
+                    foreach (DataRow dr in tb.Rows)
+                    {
+                        USER addUser = new USER();
+                        addUser.first_name = dr["first_name"].ToString();
+                        addUser.last_name = dr["last_name"].ToString();
+                        addUser.email = dr["email"].ToString();
+                        addUser.password = dr["password"].ToString();
+                        addUser.username = dr["username"].ToString();
+                        addUser.user_type = dr["user_type"].ToString();
+                        deliverers.Add(addUser);
+                    }
+                }
             }
             foreach (var item in payments)
             {
@@ -182,6 +219,49 @@ namespace GroceryBama
         {
             NewPayment form = new NewPayment();
             form.ShowDialog();
+        }
+
+        private void btn_refresh_Click(object sender, EventArgs e)
+        {
+            comboPaymentType.Items.Clear();
+            payments.Clear();
+            string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["Default"].ConnectionString;
+            using (SqlConnection _con = new SqlConnection(connectionString))
+            {
+                string queryStatement = "SELECT * FROM [GROCERYBAMA1].[dbo].[payment] where username = @username";
+
+                using (SqlCommand _cmd = new SqlCommand(queryStatement, _con))
+                {
+                    //MessageBox.Show(Globals.Persistent_Current.username);
+                    _cmd.Parameters.Add("@username", SqlDbType.VarChar).Value = Globals.Persistent_Current.username;
+                    DataTable tb = new DataTable();
+
+                    SqlDataAdapter _dap = new SqlDataAdapter(_cmd);
+
+                    _con.Open();
+                    _dap.Fill(tb);
+                    _con.Close();
+                    foreach (DataRow dr in tb.Rows)
+                    {
+                        PAYMENT addUser = new PAYMENT();
+                        addUser.username = dr["username"].ToString();
+                        addUser.payment_name = dr["payment_name"].ToString();
+                        addUser.routing_number = dr["routing_number"].ToString();
+                        addUser.account_number = dr["account_number"].ToString();
+                        payments.Add(addUser);
+                    }
+                }
+            }
+            foreach (var item in payments)
+            {
+                comboPaymentType.Items.Add(item.payment_name);
+            }
+            MessageBox.Show("Payments refreshed.");
+        }
+
+        private void button_back_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
