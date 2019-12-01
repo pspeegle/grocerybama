@@ -78,6 +78,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ADDRESS.cs" />
+    <Compile Include="AssignmentDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AssignmentDetails.Designer.cs">
+      <DependentUpon>AssignmentDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="BUYER.cs" />
     <Compile Include="BuyerAccountInformation.cs">
       <SubType>Form</SubType>
@@ -220,6 +226,9 @@
     <Compile Include="ViewCart.Designer.cs">
       <DependentUpon>ViewCart.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AssignmentDetails.resx">
+      <DependentUpon>AssignmentDetails.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BuyerAccountInformation.resx">
       <DependentUpon>BuyerAccountInformation.cs</DependentUpon>
     </EmbeddedResource>

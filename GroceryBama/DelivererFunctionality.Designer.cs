@@ -28,39 +28,42 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button7 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.button_back = new System.Windows.Forms.Button();
+            this.button_assignments = new System.Windows.Forms.Button();
+            this.button_accountinfo = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // button7
+            // button_back
             // 
-            this.button7.Location = new System.Drawing.Point(359, 386);
-            this.button7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(107, 49);
-            this.button7.TabIndex = 33;
-            this.button7.Text = "Back";
-            this.button7.UseVisualStyleBackColor = true;
+            this.button_back.Location = new System.Drawing.Point(359, 386);
+            this.button_back.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button_back.Name = "button_back";
+            this.button_back.Size = new System.Drawing.Size(107, 49);
+            this.button_back.TabIndex = 33;
+            this.button_back.Text = "Back";
+            this.button_back.UseVisualStyleBackColor = true;
+            this.button_back.Click += new System.EventHandler(this.button_back_Click);
             // 
-            // button5
+            // button_assignments
             // 
-            this.button5.Location = new System.Drawing.Point(74, 92);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(136, 64);
-            this.button5.TabIndex = 32;
-            this.button5.Text = "Assignments";
-            this.button5.UseVisualStyleBackColor = true;
+            this.button_assignments.Location = new System.Drawing.Point(74, 92);
+            this.button_assignments.Name = "button_assignments";
+            this.button_assignments.Size = new System.Drawing.Size(136, 64);
+            this.button_assignments.TabIndex = 32;
+            this.button_assignments.Text = "Assignments";
+            this.button_assignments.UseVisualStyleBackColor = true;
+            this.button_assignments.Click += new System.EventHandler(this.button_assignments_Click);
             // 
-            // button4
+            // button_accountinfo
             // 
-            this.button4.Location = new System.Drawing.Point(590, 92);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(136, 64);
-            this.button4.TabIndex = 31;
-            this.button4.Text = "Account Information";
-            this.button4.UseVisualStyleBackColor = true;
+            this.button_accountinfo.Location = new System.Drawing.Point(590, 92);
+            this.button_accountinfo.Name = "button_accountinfo";
+            this.button_accountinfo.Size = new System.Drawing.Size(136, 64);
+            this.button_accountinfo.TabIndex = 31;
+            this.button_accountinfo.Text = "Account Information";
+            this.button_accountinfo.UseVisualStyleBackColor = true;
+            this.button_accountinfo.Click += new System.EventHandler(this.button_accountinfo_Click);
             // 
             // label1
             // 
@@ -77,9 +80,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.button7);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
+            this.Controls.Add(this.button_back);
+            this.Controls.Add(this.button_assignments);
+            this.Controls.Add(this.button_accountinfo);
             this.Controls.Add(this.label1);
             this.Name = "DelivererFunctionality";
             this.Text = "DelivererFunctionality";
@@ -90,9 +93,9 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button_back;
+        private System.Windows.Forms.Button button_assignments;
+        private System.Windows.Forms.Button button_accountinfo;
         private System.Windows.Forms.Label label1;
     }
 }

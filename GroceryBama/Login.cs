@@ -41,8 +41,10 @@ namespace GroceryBama
             {
                 if (txtUsername.Text == item.username && txtPassword.Text == item.password)
                 {
+                    Globals.has_deleted = false;
                     matchFound = true;
                     Globals.Persistent_Current = item;
+                    if (Globals.Persistent_Current.user_type == "deliverer" || Globals.Persistent_Current.user_type == "manager") break;
                     foreach(var item_buyer in buyers)
                     {
                         if (item.username == item_buyer.username) Globals.Persistent_Buyer = item_buyer;
@@ -59,7 +61,6 @@ namespace GroceryBama
                     Globals.Preferred_Credit = "N/A";
                     Globals.Preferred_Routing = "N/A";
                     BuyerFunctionality form = new BuyerFunctionality();
-                    Globals.has_deleted = false;
                     form.ShowDialog();
                     continue;
                 }
@@ -68,6 +69,15 @@ namespace GroceryBama
             {
                 DialogResult dialog = new DialogResult();
                 dialog = MessageBox.Show("Error: Invalid Login Information.", "GroceryBama Message", MessageBoxButtons.OK);
+            }
+            if(Globals.Persistent_Current.user_type == "deliverer")
+            {
+                DelivererFunctionality form = new DelivererFunctionality();
+                form.ShowDialog();
+            }
+            else if(Globals.Persistent_Current.user_type == "manager")
+            {
+
             }
         }
 
