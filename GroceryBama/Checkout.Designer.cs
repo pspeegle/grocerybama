@@ -39,6 +39,7 @@
             this.textTotalPrice = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.textDeliveryInstructions = new System.Windows.Forms.TextBox();
+            this.button_new_payment = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button_finalize
@@ -151,11 +152,23 @@
             this.textDeliveryInstructions.Size = new System.Drawing.Size(516, 78);
             this.textDeliveryInstructions.TabIndex = 72;
             // 
+            // button_new_payment
+            // 
+            this.button_new_payment.Location = new System.Drawing.Point(187, 390);
+            this.button_new_payment.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button_new_payment.Name = "button_new_payment";
+            this.button_new_payment.Size = new System.Drawing.Size(107, 49);
+            this.button_new_payment.TabIndex = 73;
+            this.button_new_payment.Text = "New Payment";
+            this.button_new_payment.UseVisualStyleBackColor = true;
+            this.button_new_payment.Click += new System.EventHandler(this.button_new_payment_Click);
+            // 
             // Checkout
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button_new_payment);
             this.Controls.Add(this.textDeliveryInstructions);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.textTotalPrice);
@@ -186,5 +199,6 @@
         private System.Windows.Forms.TextBox textTotalPrice;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textDeliveryInstructions;
+        private System.Windows.Forms.Button button_new_payment;
     }
 }

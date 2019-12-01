@@ -30,6 +30,10 @@ namespace GroceryBama
 
         private void button1_Click(object sender, EventArgs e)
         {
+            users.Clear();
+            addresses.Clear();
+            buyers.Clear();
+            stores.Clear();
             LoadAll();
             //MessageBox.Show(users.Count().ToString());
             bool matchFound = false;
@@ -55,6 +59,7 @@ namespace GroceryBama
                     Globals.Preferred_Credit = "N/A";
                     Globals.Preferred_Routing = "N/A";
                     BuyerFunctionality form = new BuyerFunctionality();
+                    Globals.has_deleted = false;
                     form.ShowDialog();
                     continue;
                 }

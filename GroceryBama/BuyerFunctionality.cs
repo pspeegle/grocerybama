@@ -19,6 +19,11 @@ namespace GroceryBama
 
         private void button4_Click(object sender, EventArgs e)
         {
+            if (Globals.has_deleted)
+            {
+                this.Close();
+                return;
+            }
             BuyerAccountInformation form = new BuyerAccountInformation();
             form.ShowDialog();
         }
@@ -30,12 +35,22 @@ namespace GroceryBama
 
         private void button5_Click(object sender, EventArgs e)
         {
+            if (Globals.has_deleted)
+            {
+                this.Close();
+                return;
+            }
             List form = new List();
             form.ShowDialog();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (Globals.has_deleted)
+            {
+                this.Close();
+                return;
+            }
             PaymentMethods form = new PaymentMethods();
             form.ShowDialog();
         }

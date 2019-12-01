@@ -17,6 +17,7 @@ namespace GroceryBama
         List<PAYMENT> payments = new List<PAYMENT>();
         List<int> order_ids = new List<int>();
         int orderId = 0;
+        int totalItems = 0;
         public Checkout()
         {
             InitializeComponent();
@@ -108,7 +109,9 @@ namespace GroceryBama
                             MessageBox.Show("There was an error.");
                     }
                 }
-                MessageBox.Show("Order successfully submitted.");
+                string receipt = "Order successfully submitted. Here is your receipt.\nOrder Number: " + orderId +"\nPayment Name: " + comboPaymentType.Text
+                    + "\nDeliverer's Name: \nNumber of Items: " + totalItems + "\nTime Order Placed: " + DateTime.Now.ToString("HH:mm") + "\nTime of Delivery: " + comboDeliveryTime.Text;
+                MessageBox.Show(receipt);
                 Globals.cart.Clear();
                 this.Close();
             }
@@ -170,8 +173,15 @@ namespace GroceryBama
             foreach(var item in Globals.cart)
             {
                 totalPrice += item.quantity * item.listed_price;
+                totalItems += item.quantity;
             }
             textTotalPrice.Text = totalPrice.ToString();
+        }
+
+        private void button_new_payment_Click(object sender, EventArgs e)
+        {
+            NewPayment form = new NewPayment();
+            form.ShowDialog();
         }
     }
 }
