@@ -25,7 +25,35 @@ namespace GroceryBama
 
         private void button2_Click(object sender, EventArgs e)
         {
-            this.Close();
+            DialogResult dialog = new DialogResult();
+            dialog = MessageBox.Show("Going back will delete your current order. Are you sure you want to do this?", "Alert!", MessageBoxButtons.YesNo);
+            if (dialog == DialogResult.Yes)
+            {
+                Globals.cart.Clear();
+                this.Close();
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (!Globals.cart.Any())
+            {
+                MessageBox.Show("There is nothing in your cart.");
+                return;
+            }
+            ViewCart form = new ViewCart();
+            form.ShowDialog();
+        }
+
+        private void button_cancel_Click(object sender, EventArgs e)
+        {
+            DialogResult dialog = new DialogResult();
+            dialog = MessageBox.Show("Are you sure you want to delete your current order? This action cannot be undone.", "Alert!", MessageBoxButtons.YesNo);
+            if (dialog == DialogResult.Yes)
+            {
+                Globals.cart.Clear();
+                this.Close();
+            }
         }
     }
 }

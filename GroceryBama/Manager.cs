@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace GroceryBama
 {
@@ -102,46 +104,125 @@ namespace GroceryBama
                 MessageBox.Show("Invalid email address.");
                 return;
             }
-            addUser.username = textUsername.Text;
+            /*addUser.username = textUsername.Text;
             addUser.password = textPassword.Text;
             addUser.first_name = textFirst.Text;
             addUser.last_name = textLast.Text;
             addUser.email = textEmail.Text;
             addUser.user_type = "manager";
-            addManages.username = textUsername.Text;
+            addManages.username = textUsername.Text;*/
+
             string address_store = comboAssignStore.Text.Split('-')[0];
             address_store.Trim();
+
             //MessageBox.Show(address_store);
-            addManages.store_address = Int32.Parse(address_store);
-            using (var db = new GroceryBamaEntities3())
+            //addManages.store_address = Int32.Parse(address_store);
+            string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["Default"].ConnectionString;
+            using (SqlConnection _con = new SqlConnection(connectionString))
             {
-                db.USER.Add(addUser);
-                db.MANAGES.Add(addManages);
-                try
+                string query = "INSERT INTO [GROCERYBAMA1].[dbo].[USER] VALUES (@username, @password, 'manager', @email, @first_name, @last_name);";
+                using (SqlCommand command = new SqlCommand(query, _con))
                 {
-                    db.SaveChanges();
+                    command.Parameters.AddWithValue("@username", textUsername.Text);
+                    command.Parameters.AddWithValue("@password", textPassword.Text);
+                    command.Parameters.AddWithValue("@email", textEmail.Text);
+                    command.Parameters.AddWithValue("@first_name", textFirst.Text);
+                    command.Parameters.AddWithValue("@last_name", textLast.Text);
+
+                    _con.Open();
+                    int result = command.ExecuteNonQuery();
+                    _con.Close();
+
+                    if (result < 0)
+                        MessageBox.Show("There was an error.");
                 }
-                catch (System.Data.Entity.Validation.DbEntityValidationException)
+                query = "INSERT INTO [GROCERYBAMA1].[dbo].[MANAGES] VALUES (@username, @store_address);";
+                using (SqlCommand command = new SqlCommand(query, _con))
                 {
-                    MessageBox.Show("Something went wrong. You shouldn't ever see this if you're a user.");
+                    command.Parameters.AddWithValue("@username", textUsername.Text);
+                    command.Parameters.AddWithValue("@store_address", Int32.Parse(address_store));
+
+                    _con.Open();
+                    int result = command.ExecuteNonQuery();
+                    _con.Close();
+
+                    if (result < 0)
+                        MessageBox.Show("There was an error.");
                 }
             }
-            MessageBox.Show("Successfully registered deliverer.");
+            MessageBox.Show("Successfully registered manager.");
             this.Close();
         }
         private void LoadAll()
         {
-            using (var db = new GroceryBamaEntities3())
+            string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["Default"].ConnectionString;
+            using (SqlConnection _con = new SqlConnection(connectionString))
             {
-                users = (from u in db.USER
-                         orderby u.username
-                         select u).ToList();
-                sysinfo = (from s in db.SYSTEMINFORMATION
-                           orderby s.system_id
-                           select s).ToList();
-                stores = (from st in db.GROCERYSTORE
-                          orderby st.store_id
-                          select st).ToList();
+                string queryStatement = "SELECT * FROM [GROCERYBAMA1].[dbo].[user]";
+
+                using (SqlCommand _cmd = new SqlCommand(queryStatement, _con))
+                {
+                    DataTable tb = new DataTable();
+
+                    SqlDataAdapter _dap = new SqlDataAdapter(_cmd);
+
+                    _con.Open();
+                    _dap.Fill(tb);
+                    _con.Close();
+                    foreach (DataRow dr in tb.Rows)
+                    {
+                        USER addUser = new USER();
+                        addUser.first_name = dr["first_name"].ToString();
+                        addUser.last_name = dr["last_name"].ToString();
+                        addUser.email = dr["email"].ToString();
+                        addUser.password = dr["password"].ToString();
+                        addUser.username = dr["username"].ToString();
+                        addUser.user_type = dr["user_type"].ToString();
+                        users.Add(addUser);
+                    }
+                }
+                queryStatement = "SELECT * FROM [GROCERYBAMA1].[dbo].[systeminformation]";
+
+                using (SqlCommand _cmd = new SqlCommand(queryStatement, _con))
+                {
+                    DataTable tb = new DataTable();
+
+                    SqlDataAdapter _dap = new SqlDataAdapter(_cmd);
+
+                    _con.Open();
+                    _dap.Fill(tb);
+                    _con.Close();
+                    foreach (DataRow dr in tb.Rows)
+                    {
+                        SYSTEMINFORMATION add = new SYSTEMINFORMATION();
+                        add.system_id = Int32.Parse(dr["system_id"].ToString());
+                        add.user_codes = dr["user_codes"].ToString();
+                        sysinfo.Add(add);
+                    }
+                }
+                queryStatement = "SELECT * FROM [GROCERYBAMA1].[dbo].[grocerystore]";
+
+                using (SqlCommand _cmd = new SqlCommand(queryStatement, _con))
+                {
+                    DataTable tb = new DataTable();
+
+                    SqlDataAdapter _dap = new SqlDataAdapter(_cmd);
+
+                    _con.Open();
+                    _dap.Fill(tb);
+                    _con.Close();
+                    foreach (DataRow dr in tb.Rows)
+                    {
+                        GROCERYSTORE addStore = new GROCERYSTORE();
+                        addStore.store_id = Int32.Parse(dr["store_id"].ToString());
+                        addStore.store_name = dr["store_name"].ToString();
+                        addStore.phone = dr["phone"].ToString();
+                        addStore.address_id = Int32.Parse(dr["address_id"].ToString());
+                        addStore.opening_time = dr["opening_time"].ToString();
+                        addStore.closing_time = dr["closing_time"].ToString();
+                        stores.Add(addStore);
+                    }
+                }
             }
         }
         private void LoadCombo()

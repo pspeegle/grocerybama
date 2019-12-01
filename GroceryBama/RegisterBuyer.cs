@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace GroceryBama
 {
@@ -125,6 +127,7 @@ namespace GroceryBama
                     return;
                 }
             }
+            /*
             addUser.username = textUser.Text;
             addUser.password = textPassword.Text;
             addUser.first_name = textFirstName.Text;
@@ -134,33 +137,73 @@ namespace GroceryBama
             addBuyer.default_payment = "NULL";
             addBuyer.default_store_id = 1;
             addBuyer.phone = textPhone.Text;
-            addBuyer.username = textUser.Text;
+            addBuyer.username = textUser.Text;*/
+
             int addyMax = 0;
-            foreach(var item in addresses)
+
+            foreach (var item in addresses)
             {
                 if (item.id > addyMax) addyMax = item.id;
             }
             addyMax++;
-            addAddress.id = addyMax;
+
+            /*addAddress.id = addyMax;
             addBuyer.address = addyMax;
             addAddress.house_number = textAddy.Text;
             addAddress.street = textStreet.Text;
             addAddress.state = textState.Text;
             addAddress.zip_code = textZip.Text;
-            addAddress.city = textCity.Text;
+            addAddress.city = textCity.Text;*/
 
-            using (var db = new GroceryBamaEntities3())
+            string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["Default"].ConnectionString;
+            using (SqlConnection _con = new SqlConnection(connectionString))
             {
-                db.USER.Add(addUser);
-                db.ADDRESS.Add(addAddress);
-                db.BUYER.Add(addBuyer);
-                try
+                string query = "INSERT INTO [GROCERYBAMA1].[dbo].[USER] VALUES (@username, @password, 'buyer', @email, @first_name, @last_name);";
+                using (SqlCommand command = new SqlCommand(query, _con))
                 {
-                    db.SaveChanges();
+                    command.Parameters.Add("@username", SqlDbType.VarChar).Value = textUser.Text;
+                    command.Parameters.Add("@password", SqlDbType.VarChar).Value = textPassword.Text;
+                    command.Parameters.Add("@email", SqlDbType.VarChar).Value = textEmail.Text;
+                    command.Parameters.Add("@first_name", SqlDbType.VarChar).Value = textFirstName.Text;
+                    command.Parameters.Add("@last_name", SqlDbType.VarChar).Value = textLastName.Text;
+                    _con.Open();
+                    int result = command.ExecuteNonQuery();
+                    _con.Close();
+
+                    if (result < 0)
+                        MessageBox.Show("There was an error.");
                 }
-                catch (System.Data.Entity.Validation.DbEntityValidationException)
+
+                query = "INSERT INTO [GROCERYBAMA1].[dbo].[ADDRESS] VALUES (@id, @house_number, @street, @city, @state, @zip_code);";
+                using (SqlCommand command = new SqlCommand(query, _con))
                 {
-                    MessageBox.Show("Something went wrong. You shouldn't ever see this if you're a user.");
+                    command.Parameters.Add("@id", SqlDbType.Int).Value = addyMax;
+                    command.Parameters.Add("@house_number", SqlDbType.VarChar).Value = textAddy.Text;
+                    command.Parameters.Add("@street", SqlDbType.VarChar).Value = textStreet.Text;
+                    command.Parameters.Add("@city", SqlDbType.VarChar).Value = textCity.Text;
+                    command.Parameters.Add("@state", SqlDbType.VarChar).Value = textState.Text;
+                    command.Parameters.Add("@zip_code", SqlDbType.VarChar).Value = textZip.Text;
+                    _con.Open();
+                    int result = command.ExecuteNonQuery();
+                    _con.Close();
+
+                    if (result < 0)
+                        MessageBox.Show("There was an error.");
+                }
+
+                query = "INSERT INTO [GROCERYBAMA1].[dbo].[BUYER] VALUES (@username, @phone, @address, 'NULL', '1');";
+                using (SqlCommand command = new SqlCommand(query, _con))
+                {
+                    command.Parameters.Add("@username", SqlDbType.VarChar).Value = textUser.Text;
+                    command.Parameters.Add("@phone", SqlDbType.VarChar).Value = textPhone.Text;
+                    command.Parameters.Add("@address", SqlDbType.Int).Value = addyMax;
+
+                    _con.Open();
+                    int result = command.ExecuteNonQuery();
+                    _con.Close();
+
+                    if (result < 0)
+                        MessageBox.Show("There was an error.");
                 }
             }
             MessageBox.Show("Successfully registered buyer.");
@@ -174,17 +217,78 @@ namespace GroceryBama
 
         private void LoadAll()
         {
-            using (var db = new GroceryBamaEntities3())
+            string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["Default"].ConnectionString;
+            using (SqlConnection _con = new SqlConnection(connectionString))
             {
-                users = (from u in db.USER
-                         orderby u.username
-                         select u).ToList();
-                buyers = (from b in db.BUYER
-                          orderby b.username
-                          select b).ToList();
-                addresses = (from a in db.ADDRESS
-                             orderby a.id
-                             select a).ToList();
+                string queryStatement = "SELECT * FROM [GROCERYBAMA1].[dbo].[user]";
+
+                using (SqlCommand _cmd = new SqlCommand(queryStatement, _con))
+                {
+                    DataTable tb = new DataTable();
+
+                    SqlDataAdapter _dap = new SqlDataAdapter(_cmd);
+
+                    _con.Open();
+                    _dap.Fill(tb);
+                    _con.Close();
+                    foreach (DataRow dr in tb.Rows)
+                    {
+                        USER addUser = new USER();
+                        addUser.first_name = dr["first_name"].ToString();
+                        addUser.last_name = dr["last_name"].ToString();
+                        addUser.email = dr["email"].ToString();
+                        addUser.password = dr["password"].ToString();
+                        addUser.username = dr["username"].ToString();
+                        addUser.user_type = dr["user_type"].ToString();
+                        users.Add(addUser);
+                    }
+                }
+                queryStatement = "SELECT * FROM [GROCERYBAMA1].[dbo].[buyer]";
+
+                using (SqlCommand _cmd = new SqlCommand(queryStatement, _con))
+                {
+                    DataTable tb = new DataTable();
+
+                    SqlDataAdapter _dap = new SqlDataAdapter(_cmd);
+
+                    _con.Open();
+                    _dap.Fill(tb);
+                    _con.Close();
+                    foreach (DataRow dr in tb.Rows)
+                    {
+                        BUYER addBuyer = new BUYER();
+                        addBuyer.phone = dr["phone"].ToString();
+                        addBuyer.address = Int32.Parse(dr["address_id"].ToString());
+                        addBuyer.default_payment = dr["default_payment"].ToString();
+                        addBuyer.default_store_id = Int32.Parse(dr["default_store_id"].ToString());
+                        addBuyer.username = dr["username"].ToString();
+                        buyers.Add(addBuyer);
+                    }
+                }
+
+                queryStatement = "SELECT * FROM [GROCERYBAMA1].[dbo].[address]";
+
+                using (SqlCommand _cmd = new SqlCommand(queryStatement, _con))
+                {
+                    DataTable tb = new DataTable();
+
+                    SqlDataAdapter _dap = new SqlDataAdapter(_cmd);
+
+                    _con.Open();
+                    _dap.Fill(tb);
+                    _con.Close();
+                    foreach (DataRow dr in tb.Rows)
+                    {
+                        ADDRESS addAddress = new ADDRESS();
+                        addAddress.id = Int32.Parse(dr["id"].ToString());
+                        addAddress.house_number = dr["house_number"].ToString();
+                        addAddress.state = dr["state"].ToString();
+                        addAddress.street = dr["street"].ToString();
+                        addAddress.city = dr["city"].ToString();
+                        addAddress.zip_code = dr["zip_code"].ToString();
+                        addresses.Add(addAddress);
+                    }
+                }
             }
         }
     }

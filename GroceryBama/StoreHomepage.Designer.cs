@@ -31,7 +31,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.button_cancel = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -65,16 +65,18 @@
             this.button1.TabIndex = 56;
             this.button1.Text = "View Cart";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button3
+            // button_cancel
             // 
-            this.button3.Location = new System.Drawing.Point(681, 88);
-            this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(107, 49);
-            this.button3.TabIndex = 57;
-            this.button3.Text = "Cancel Order";
-            this.button3.UseVisualStyleBackColor = true;
+            this.button_cancel.Location = new System.Drawing.Point(681, 88);
+            this.button_cancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button_cancel.Name = "button_cancel";
+            this.button_cancel.Size = new System.Drawing.Size(107, 49);
+            this.button_cancel.TabIndex = 57;
+            this.button_cancel.Text = "Cancel Order";
+            this.button_cancel.UseVisualStyleBackColor = true;
+            this.button_cancel.Click += new System.EventHandler(this.button_cancel_Click);
             // 
             // button4
             // 
@@ -93,7 +95,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button_cancel);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label1);
@@ -109,7 +111,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button_cancel;
         private System.Windows.Forms.Button button4;
     }
 }

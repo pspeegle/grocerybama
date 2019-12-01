@@ -33,5 +33,11 @@ namespace GroceryBama
             List form = new List();
             form.ShowDialog();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            PaymentMethods form = new PaymentMethods();
+            form.ShowDialog();
+        }
     }
 }

@@ -17,6 +17,8 @@ namespace GroceryBama
         private static string preferred_credit;
         private static string preferred_routing;
         private static string chosen_item_lookup;
+        private static string payment_name_used;
+        public static List<ITEM> cart = new List<ITEM>();
 
         public static USER Persistent_Current
         {
@@ -59,7 +61,11 @@ namespace GroceryBama
             get { return preferred_routing; }
             set { preferred_routing = value; }
         }
-        
+        public static string Payment_Name_Used
+        {
+            get { return payment_name_used; }
+            set { payment_name_used = value; }
+        }
         public static string Chosen_Item_Lookup
         {
             get { return chosen_item_lookup; }

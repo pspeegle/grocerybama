@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace GroceryBama
 {
@@ -27,9 +29,13 @@ namespace GroceryBama
         //previous
         private void button2_Click(object sender, EventArgs e)
         {
-            if (counter < 5)
+            if (counter <= 5)
             {
                 counter = 0;
+            }
+            else if(counter % 5 == 0)
+            {
+                counter -= 10;
             }
             else
             {
@@ -48,20 +54,59 @@ namespace GroceryBama
         {
             this.Close();
         }
-        
+
         private void LoadAll()
         {
-            using (var db = new GroceryBamaEntities3())
+            string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["Default"].ConnectionString;
+            string queryStatement = "SELECT * FROM [GROCERYBAMA1].[dbo].[grocerystore]";
+            using (SqlConnection _con = new SqlConnection(connectionString))
             {
-                stores = (from u in db.GROCERYSTORE
-                         orderby u.store_id
-                         select u).ToList();
-                addresses = (from a in db.ADDRESS
-                             orderby a.id
-                             select a).ToList();
+                using (SqlCommand _cmd = new SqlCommand(queryStatement, _con))
+                {
+                    DataTable tb = new DataTable();
+
+                    SqlDataAdapter _dap = new SqlDataAdapter(_cmd);
+
+                    _con.Open();
+                    _dap.Fill(tb);
+                    _con.Close();
+                    foreach (DataRow dr in tb.Rows)
+                    {
+                        GROCERYSTORE addStore = new GROCERYSTORE();
+                        addStore.store_id = Int32.Parse(dr["store_id"].ToString());
+                        addStore.store_name = dr["store_name"].ToString();
+                        addStore.phone = dr["phone"].ToString();
+                        addStore.address_id = Int32.Parse(dr["address_id"].ToString());
+                        addStore.opening_time = dr["opening_time"].ToString();
+                        addStore.closing_time = dr["closing_time"].ToString();
+                        stores.Add(addStore);
+                    }
+                }
+                queryStatement = "SELECT * FROM [GROCERYBAMA1].[dbo].[address]";
+
+                using (SqlCommand _cmd = new SqlCommand(queryStatement, _con))
+                {
+                    DataTable tb = new DataTable();
+
+                    SqlDataAdapter _dap = new SqlDataAdapter(_cmd);
+
+                    _con.Open();
+                    _dap.Fill(tb);
+                    _con.Close();
+                    foreach (DataRow dr in tb.Rows)
+                    {
+                        ADDRESS addAddress = new ADDRESS();
+                        addAddress.id = Int32.Parse(dr["id"].ToString());
+                        addAddress.house_number = dr["house_number"].ToString();
+                        addAddress.state = dr["state"].ToString();
+                        addAddress.street = dr["street"].ToString();
+                        addAddress.city = dr["city"].ToString();
+                        addAddress.zip_code = dr["zip_code"].ToString();
+                        addresses.Add(addAddress);
+                    }
+                }
             }
         }
-        
         private void DisplayStores()
         {
             textAll.Text = "";
@@ -117,20 +162,63 @@ namespace GroceryBama
         private void button5_Click(object sender, EventArgs e)
         {
             is_descending = !is_descending;
-            using (var db = new GroceryBamaEntities3())
+            stores.Clear();
+            if (!is_descending)
             {
-                stores.Clear();
-                if (!is_descending)
+                string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["Default"].ConnectionString;
+                string queryStatement = "SELECT * FROM [GROCERYBAMA1].[dbo].[grocerystore] ORDER BY store_name";
+                using (SqlConnection _con = new SqlConnection(connectionString))
                 {
-                    stores = (from u in db.GROCERYSTORE
-                              orderby u.store_name
-                              select u).ToList();
+                    using (SqlCommand _cmd = new SqlCommand(queryStatement, _con))
+                    {
+                        DataTable tb = new DataTable();
+
+                        SqlDataAdapter _dap = new SqlDataAdapter(_cmd);
+
+                        _con.Open();
+                        _dap.Fill(tb);
+                        _con.Close();
+                        foreach (DataRow dr in tb.Rows)
+                        {
+                            GROCERYSTORE addStore = new GROCERYSTORE();
+                            addStore.store_id = Int32.Parse(dr["store_id"].ToString());
+                            addStore.store_name = dr["store_name"].ToString();
+                            addStore.phone = dr["phone"].ToString();
+                            addStore.address_id = Int32.Parse(dr["address_id"].ToString());
+                            addStore.opening_time = dr["opening_time"].ToString();
+                            addStore.closing_time = dr["closing_time"].ToString();
+                            stores.Add(addStore);
+                        }
+                    }
                 }
-                else
+            }
+            else
+            {
+                string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["Default"].ConnectionString;
+                string queryStatement = "SELECT * FROM [GROCERYBAMA1].[dbo].[grocerystore] ORDER BY store_name DESC";
+                using (SqlConnection _con = new SqlConnection(connectionString))
                 {
-                    stores = (from u in db.GROCERYSTORE
-                              orderby u.store_name descending
-                              select u).ToList();
+                    using (SqlCommand _cmd = new SqlCommand(queryStatement, _con))
+                    {
+                        DataTable tb = new DataTable();
+
+                        SqlDataAdapter _dap = new SqlDataAdapter(_cmd);
+
+                        _con.Open();
+                        _dap.Fill(tb);
+                        _con.Close();
+                        foreach (DataRow dr in tb.Rows)
+                        {
+                            GROCERYSTORE addStore = new GROCERYSTORE();
+                            addStore.store_id = Int32.Parse(dr["store_id"].ToString());
+                            addStore.store_name = dr["store_name"].ToString();
+                            addStore.phone = dr["phone"].ToString();
+                            addStore.address_id = Int32.Parse(dr["address_id"].ToString());
+                            addStore.opening_time = dr["opening_time"].ToString();
+                            addStore.closing_time = dr["closing_time"].ToString();
+                            stores.Add(addStore);
+                        }
+                    }
                 }
             }
             if (counter % 5 == 0) counter -= 5;

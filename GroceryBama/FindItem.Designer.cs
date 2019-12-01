@@ -28,140 +28,152 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
-            this.button12 = new System.Windows.Forms.Button();
+            this.button_other = new System.Windows.Forms.Button();
+            this.button_meat = new System.Windows.Forms.Button();
+            this.button_dairy = new System.Windows.Forms.Button();
+            this.button_personal_care = new System.Windows.Forms.Button();
+            this.button_produce = new System.Windows.Forms.Button();
+            this.button_frozen_foods = new System.Windows.Forms.Button();
+            this.button_cleaning = new System.Windows.Forms.Button();
+            this.button_canned_goods = new System.Windows.Forms.Button();
+            this.button_bakinggoods = new System.Windows.Forms.Button();
+            this.button_beverages = new System.Windows.Forms.Button();
+            this.button_back = new System.Windows.Forms.Button();
+            this.button_checkout = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // button1
+            // button_other
             // 
-            this.button1.Location = new System.Drawing.Point(351, 172);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(107, 49);
-            this.button1.TabIndex = 56;
-            this.button1.Text = "Others";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button_other.Location = new System.Drawing.Point(351, 172);
+            this.button_other.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button_other.Name = "button_other";
+            this.button_other.Size = new System.Drawing.Size(107, 49);
+            this.button_other.TabIndex = 56;
+            this.button_other.Text = "Others";
+            this.button_other.UseVisualStyleBackColor = true;
+            this.button_other.Click += new System.EventHandler(this.button_other_Click);
             // 
-            // button2
+            // button_meat
             // 
-            this.button2.Location = new System.Drawing.Point(238, 66);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(107, 49);
-            this.button2.TabIndex = 57;
-            this.button2.Text = "Meat";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button_meat.Location = new System.Drawing.Point(238, 66);
+            this.button_meat.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button_meat.Name = "button_meat";
+            this.button_meat.Size = new System.Drawing.Size(107, 49);
+            this.button_meat.TabIndex = 57;
+            this.button_meat.Text = "Meat";
+            this.button_meat.UseVisualStyleBackColor = true;
+            this.button_meat.Click += new System.EventHandler(this.button_meat_Click);
             // 
-            // button3
+            // button_dairy
             // 
-            this.button3.Location = new System.Drawing.Point(125, 119);
-            this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(107, 49);
-            this.button3.TabIndex = 58;
-            this.button3.Text = "Dairy";
-            this.button3.UseVisualStyleBackColor = true;
+            this.button_dairy.Location = new System.Drawing.Point(125, 119);
+            this.button_dairy.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button_dairy.Name = "button_dairy";
+            this.button_dairy.Size = new System.Drawing.Size(107, 49);
+            this.button_dairy.TabIndex = 58;
+            this.button_dairy.Text = "Dairy";
+            this.button_dairy.UseVisualStyleBackColor = true;
+            this.button_dairy.Click += new System.EventHandler(this.button_dairy_Click);
             // 
-            // button4
+            // button_personal_care
             // 
-            this.button4.Location = new System.Drawing.Point(238, 119);
-            this.button4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(107, 49);
-            this.button4.TabIndex = 59;
-            this.button4.Text = "Personal Care";
-            this.button4.UseVisualStyleBackColor = true;
+            this.button_personal_care.Location = new System.Drawing.Point(238, 119);
+            this.button_personal_care.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button_personal_care.Name = "button_personal_care";
+            this.button_personal_care.Size = new System.Drawing.Size(107, 49);
+            this.button_personal_care.TabIndex = 59;
+            this.button_personal_care.Text = "Personal Care";
+            this.button_personal_care.UseVisualStyleBackColor = true;
+            this.button_personal_care.Click += new System.EventHandler(this.button_personal_care_Click);
             // 
-            // button5
+            // button_produce
             // 
-            this.button5.Location = new System.Drawing.Point(238, 172);
-            this.button5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(107, 49);
-            this.button5.TabIndex = 60;
-            this.button5.Text = "Produce";
-            this.button5.UseVisualStyleBackColor = true;
+            this.button_produce.Location = new System.Drawing.Point(238, 172);
+            this.button_produce.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button_produce.Name = "button_produce";
+            this.button_produce.Size = new System.Drawing.Size(107, 49);
+            this.button_produce.TabIndex = 60;
+            this.button_produce.Text = "Produce";
+            this.button_produce.UseVisualStyleBackColor = true;
+            this.button_produce.Click += new System.EventHandler(this.button_produce_Click);
             // 
-            // button6
+            // button_frozen_foods
             // 
-            this.button6.Location = new System.Drawing.Point(125, 172);
-            this.button6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(107, 49);
-            this.button6.TabIndex = 61;
-            this.button6.Text = "Frozen Foods";
-            this.button6.UseVisualStyleBackColor = true;
+            this.button_frozen_foods.Location = new System.Drawing.Point(125, 172);
+            this.button_frozen_foods.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button_frozen_foods.Name = "button_frozen_foods";
+            this.button_frozen_foods.Size = new System.Drawing.Size(107, 49);
+            this.button_frozen_foods.TabIndex = 61;
+            this.button_frozen_foods.Text = "Frozen Foods";
+            this.button_frozen_foods.UseVisualStyleBackColor = true;
+            this.button_frozen_foods.Click += new System.EventHandler(this.button_frozen_foods_Click);
             // 
-            // button7
+            // button_cleaning
             // 
-            this.button7.Location = new System.Drawing.Point(125, 66);
-            this.button7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(107, 49);
-            this.button7.TabIndex = 62;
-            this.button7.Text = "Cleaning Products";
-            this.button7.UseVisualStyleBackColor = true;
+            this.button_cleaning.Location = new System.Drawing.Point(125, 66);
+            this.button_cleaning.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button_cleaning.Name = "button_cleaning";
+            this.button_cleaning.Size = new System.Drawing.Size(107, 49);
+            this.button_cleaning.TabIndex = 62;
+            this.button_cleaning.Text = "Cleaning Products";
+            this.button_cleaning.UseVisualStyleBackColor = true;
+            this.button_cleaning.Click += new System.EventHandler(this.button_cleaning_Click);
             // 
-            // button8
+            // button_canned_goods
             // 
-            this.button8.Location = new System.Drawing.Point(12, 172);
-            this.button8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(107, 49);
-            this.button8.TabIndex = 63;
-            this.button8.Text = "Canned Goods";
-            this.button8.UseVisualStyleBackColor = true;
+            this.button_canned_goods.Location = new System.Drawing.Point(12, 172);
+            this.button_canned_goods.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button_canned_goods.Name = "button_canned_goods";
+            this.button_canned_goods.Size = new System.Drawing.Size(107, 49);
+            this.button_canned_goods.TabIndex = 63;
+            this.button_canned_goods.Text = "Canned Goods";
+            this.button_canned_goods.UseVisualStyleBackColor = true;
+            this.button_canned_goods.Click += new System.EventHandler(this.button_canned_goods_Click);
             // 
-            // button9
+            // button_bakinggoods
             // 
-            this.button9.Location = new System.Drawing.Point(12, 66);
-            this.button9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(107, 49);
-            this.button9.TabIndex = 64;
-            this.button9.Text = "Baking Goods";
-            this.button9.UseVisualStyleBackColor = true;
+            this.button_bakinggoods.Location = new System.Drawing.Point(12, 66);
+            this.button_bakinggoods.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button_bakinggoods.Name = "button_bakinggoods";
+            this.button_bakinggoods.Size = new System.Drawing.Size(107, 49);
+            this.button_bakinggoods.TabIndex = 64;
+            this.button_bakinggoods.Text = "Baking Goods";
+            this.button_bakinggoods.UseVisualStyleBackColor = true;
+            this.button_bakinggoods.Click += new System.EventHandler(this.button9_Click);
             // 
-            // button10
+            // button_beverages
             // 
-            this.button10.Location = new System.Drawing.Point(12, 119);
-            this.button10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(107, 49);
-            this.button10.TabIndex = 65;
-            this.button10.Text = "Beverages";
-            this.button10.UseVisualStyleBackColor = true;
+            this.button_beverages.Location = new System.Drawing.Point(12, 119);
+            this.button_beverages.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button_beverages.Name = "button_beverages";
+            this.button_beverages.Size = new System.Drawing.Size(107, 49);
+            this.button_beverages.TabIndex = 65;
+            this.button_beverages.Text = "Beverages";
+            this.button_beverages.UseVisualStyleBackColor = true;
+            this.button_beverages.Click += new System.EventHandler(this.button_beverages_Click);
             // 
-            // button11
+            // button_back
             // 
-            this.button11.Location = new System.Drawing.Point(12, 390);
-            this.button11.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(107, 49);
-            this.button11.TabIndex = 66;
-            this.button11.Text = "Back";
-            this.button11.UseVisualStyleBackColor = true;
+            this.button_back.Location = new System.Drawing.Point(12, 390);
+            this.button_back.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button_back.Name = "button_back";
+            this.button_back.Size = new System.Drawing.Size(107, 49);
+            this.button_back.TabIndex = 66;
+            this.button_back.Text = "Back";
+            this.button_back.UseVisualStyleBackColor = true;
+            this.button_back.Click += new System.EventHandler(this.button_back_Click);
             // 
-            // button12
+            // button_checkout
             // 
-            this.button12.Location = new System.Drawing.Point(681, 390);
-            this.button12.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(107, 49);
-            this.button12.TabIndex = 67;
-            this.button12.Text = "Checkout";
-            this.button12.UseVisualStyleBackColor = true;
+            this.button_checkout.Location = new System.Drawing.Point(681, 390);
+            this.button_checkout.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button_checkout.Name = "button_checkout";
+            this.button_checkout.Size = new System.Drawing.Size(107, 49);
+            this.button_checkout.TabIndex = 67;
+            this.button_checkout.Text = "Checkout";
+            this.button_checkout.UseVisualStyleBackColor = true;
+            this.button_checkout.Click += new System.EventHandler(this.button_checkout_Click);
             // 
             // label1
             // 
@@ -179,18 +191,18 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button12);
-            this.Controls.Add(this.button11);
-            this.Controls.Add(this.button10);
-            this.Controls.Add(this.button9);
-            this.Controls.Add(this.button8);
-            this.Controls.Add(this.button7);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.button_checkout);
+            this.Controls.Add(this.button_back);
+            this.Controls.Add(this.button_beverages);
+            this.Controls.Add(this.button_bakinggoods);
+            this.Controls.Add(this.button_canned_goods);
+            this.Controls.Add(this.button_cleaning);
+            this.Controls.Add(this.button_frozen_foods);
+            this.Controls.Add(this.button_produce);
+            this.Controls.Add(this.button_personal_care);
+            this.Controls.Add(this.button_dairy);
+            this.Controls.Add(this.button_meat);
+            this.Controls.Add(this.button_other);
             this.Name = "FindItem";
             this.Text = "FindItem";
             this.ResumeLayout(false);
@@ -200,18 +212,18 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.Button button_other;
+        private System.Windows.Forms.Button button_meat;
+        private System.Windows.Forms.Button button_dairy;
+        private System.Windows.Forms.Button button_personal_care;
+        private System.Windows.Forms.Button button_produce;
+        private System.Windows.Forms.Button button_frozen_foods;
+        private System.Windows.Forms.Button button_cleaning;
+        private System.Windows.Forms.Button button_canned_goods;
+        private System.Windows.Forms.Button button_bakinggoods;
+        private System.Windows.Forms.Button button_beverages;
+        private System.Windows.Forms.Button button_back;
+        private System.Windows.Forms.Button button_checkout;
         private System.Windows.Forms.Label label1;
     }
 }

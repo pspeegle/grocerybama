@@ -28,26 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button5 = new System.Windows.Forms.Button();
+            this.button_order_name = new System.Windows.Forms.Button();
             this.comboSelect = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.button_add_item = new System.Windows.Forms.Button();
+            this.button_back = new System.Windows.Forms.Button();
+            this.button_next = new System.Windows.Forms.Button();
+            this.button_previous = new System.Windows.Forms.Button();
             this.textAll = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.numericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.button1 = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
-            // button5
+            // button_order_name
             // 
-            this.button5.Location = new System.Drawing.Point(17, 360);
-            this.button5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(107, 49);
-            this.button5.TabIndex = 69;
-            this.button5.Text = "Order By Name";
-            this.button5.UseVisualStyleBackColor = true;
+            this.button_order_name.Location = new System.Drawing.Point(17, 360);
+            this.button_order_name.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button_order_name.Name = "button_order_name";
+            this.button_order_name.Size = new System.Drawing.Size(107, 49);
+            this.button_order_name.TabIndex = 69;
+            this.button_order_name.Text = "Order By Name";
+            this.button_order_name.UseVisualStyleBackColor = true;
+            this.button_order_name.Click += new System.EventHandler(this.button_order_name_Click);
             // 
             // comboSelect
             // 
@@ -62,49 +67,53 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(378, 363);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(89, 17);
+            this.label2.Size = new System.Drawing.Size(81, 17);
             this.label2.TabIndex = 67;
-            this.label2.Text = "Select Store:";
+            this.label2.Text = "Select Item:";
             // 
-            // button4
+            // button_add_item
             // 
-            this.button4.Location = new System.Drawing.Point(869, 497);
-            this.button4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(107, 49);
-            this.button4.TabIndex = 66;
-            this.button4.Text = "Choose";
-            this.button4.UseVisualStyleBackColor = true;
+            this.button_add_item.Location = new System.Drawing.Point(869, 497);
+            this.button_add_item.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button_add_item.Name = "button_add_item";
+            this.button_add_item.Size = new System.Drawing.Size(107, 49);
+            this.button_add_item.TabIndex = 66;
+            this.button_add_item.Text = "Add Item";
+            this.button_add_item.UseVisualStyleBackColor = true;
+            this.button_add_item.Click += new System.EventHandler(this.button_add_item_Click);
             // 
-            // button3
+            // button_back
             // 
-            this.button3.Location = new System.Drawing.Point(17, 497);
-            this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(107, 49);
-            this.button3.TabIndex = 65;
-            this.button3.Text = "Back";
-            this.button3.UseVisualStyleBackColor = true;
+            this.button_back.Location = new System.Drawing.Point(17, 497);
+            this.button_back.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button_back.Name = "button_back";
+            this.button_back.Size = new System.Drawing.Size(107, 49);
+            this.button_back.TabIndex = 65;
+            this.button_back.Text = "Back";
+            this.button_back.UseVisualStyleBackColor = true;
+            this.button_back.Click += new System.EventHandler(this.button_back_Click);
             // 
-            // button1
+            // button_next
             // 
-            this.button1.Location = new System.Drawing.Point(511, 497);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(107, 49);
-            this.button1.TabIndex = 64;
-            this.button1.Text = "Next";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button_next.Location = new System.Drawing.Point(511, 497);
+            this.button_next.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button_next.Name = "button_next";
+            this.button_next.Size = new System.Drawing.Size(107, 49);
+            this.button_next.TabIndex = 64;
+            this.button_next.Text = "Next";
+            this.button_next.UseVisualStyleBackColor = true;
+            this.button_next.Click += new System.EventHandler(this.button_next_Click);
             // 
-            // button2
+            // button_previous
             // 
-            this.button2.Location = new System.Drawing.Point(364, 497);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(107, 49);
-            this.button2.TabIndex = 63;
-            this.button2.Text = "Previous";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button_previous.Location = new System.Drawing.Point(364, 497);
+            this.button_previous.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button_previous.Name = "button_previous";
+            this.button_previous.Size = new System.Drawing.Size(107, 49);
+            this.button_previous.TabIndex = 63;
+            this.button_previous.Text = "Previous";
+            this.button_previous.UseVisualStyleBackColor = true;
+            this.button_previous.Click += new System.EventHandler(this.button_previous_Click);
             // 
             // textAll
             // 
@@ -121,26 +130,57 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(411, 10);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(160, 32);
+            this.label1.Size = new System.Drawing.Size(145, 32);
             this.label1.TabIndex = 61;
-            this.label1.Text = "List Stores";
+            this.label1.Text = "List Items";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(351, 392);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(108, 17);
+            this.label3.TabIndex = 70;
+            this.label3.Text = "Select Quantity:";
+            // 
+            // numericUpDown
+            // 
+            this.numericUpDown.Location = new System.Drawing.Point(483, 392);
+            this.numericUpDown.Name = "numericUpDown";
+            this.numericUpDown.Size = new System.Drawing.Size(121, 22);
+            this.numericUpDown.TabIndex = 71;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(869, 360);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(107, 49);
+            this.button1.TabIndex = 72;
+            this.button1.Text = "Order By Price";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // ListItems
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(993, 556);
-            this.Controls.Add(this.button5);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.numericUpDown);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.button_order_name);
             this.Controls.Add(this.comboSelect);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button_add_item);
+            this.Controls.Add(this.button_back);
+            this.Controls.Add(this.button_next);
+            this.Controls.Add(this.button_previous);
             this.Controls.Add(this.textAll);
             this.Controls.Add(this.label1);
             this.Name = "ListItems";
             this.Text = "ListItems";
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -148,14 +188,17 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button_order_name;
         private System.Windows.Forms.ComboBox comboSelect;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button_add_item;
+        private System.Windows.Forms.Button button_back;
+        private System.Windows.Forms.Button button_next;
+        private System.Windows.Forms.Button button_previous;
         private System.Windows.Forms.TextBox textAll;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.NumericUpDown numericUpDown;
+        private System.Windows.Forms.Button button1;
     }
 }

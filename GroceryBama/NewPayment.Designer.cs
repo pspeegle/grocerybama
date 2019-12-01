@@ -28,38 +28,40 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button3 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.button_back = new System.Windows.Forms.Button();
+            this.button_add = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textRoutingNumber = new System.Windows.Forms.TextBox();
+            this.textAccountNumber = new System.Windows.Forms.TextBox();
+            this.textPaymentName = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboIsDefault = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
-            // button3
+            // button_back
             // 
-            this.button3.Location = new System.Drawing.Point(12, 391);
-            this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(107, 49);
-            this.button3.TabIndex = 68;
-            this.button3.Text = "Back";
-            this.button3.UseVisualStyleBackColor = true;
+            this.button_back.Location = new System.Drawing.Point(12, 391);
+            this.button_back.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button_back.Name = "button_back";
+            this.button_back.Size = new System.Drawing.Size(107, 49);
+            this.button_back.TabIndex = 68;
+            this.button_back.Text = "Back";
+            this.button_back.UseVisualStyleBackColor = true;
+            this.button_back.Click += new System.EventHandler(this.button_back_Click);
             // 
-            // button1
+            // button_add
             // 
-            this.button1.Location = new System.Drawing.Point(681, 391);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(107, 49);
-            this.button1.TabIndex = 67;
-            this.button1.Text = "Add Payment";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button_add.Location = new System.Drawing.Point(681, 391);
+            this.button_add.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button_add.Name = "button_add";
+            this.button_add.Size = new System.Drawing.Size(107, 49);
+            this.button_add.TabIndex = 67;
+            this.button_add.Text = "Add Payment";
+            this.button_add.UseVisualStyleBackColor = true;
+            this.button_add.Click += new System.EventHandler(this.button_add_Click);
             // 
             // label1
             // 
@@ -71,29 +73,29 @@
             this.label1.TabIndex = 64;
             this.label1.Text = "New Payment";
             // 
-            // textBox3
+            // textRoutingNumber
             // 
-            this.textBox3.Location = new System.Drawing.Point(306, 169);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(209, 22);
-            this.textBox3.TabIndex = 75;
+            this.textRoutingNumber.Location = new System.Drawing.Point(306, 169);
+            this.textRoutingNumber.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textRoutingNumber.Name = "textRoutingNumber";
+            this.textRoutingNumber.Size = new System.Drawing.Size(209, 22);
+            this.textRoutingNumber.TabIndex = 75;
             // 
-            // textBox2
+            // textAccountNumber
             // 
-            this.textBox2.Location = new System.Drawing.Point(306, 141);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(209, 22);
-            this.textBox2.TabIndex = 74;
+            this.textAccountNumber.Location = new System.Drawing.Point(306, 141);
+            this.textAccountNumber.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textAccountNumber.Name = "textAccountNumber";
+            this.textAccountNumber.Size = new System.Drawing.Size(209, 22);
+            this.textAccountNumber.TabIndex = 74;
             // 
-            // textBox1
+            // textPaymentName
             // 
-            this.textBox1.Location = new System.Drawing.Point(306, 111);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(209, 22);
-            this.textBox1.TabIndex = 73;
+            this.textPaymentName.Location = new System.Drawing.Point(306, 111);
+            this.textPaymentName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textPaymentName.Name = "textPaymentName";
+            this.textPaymentName.Size = new System.Drawing.Size(209, 22);
+            this.textPaymentName.TabIndex = 73;
             // 
             // label5
             // 
@@ -135,29 +137,32 @@
             this.label2.TabIndex = 69;
             this.label2.Text = "Payment Name";
             // 
-            // comboBox1
+            // comboIsDefault
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(306, 198);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(209, 24);
-            this.comboBox1.TabIndex = 76;
+            this.comboIsDefault.FormattingEnabled = true;
+            this.comboIsDefault.Items.AddRange(new object[] {
+            "Yes",
+            "No"});
+            this.comboIsDefault.Location = new System.Drawing.Point(306, 198);
+            this.comboIsDefault.Name = "comboIsDefault";
+            this.comboIsDefault.Size = new System.Drawing.Size(209, 24);
+            this.comboIsDefault.TabIndex = 76;
             // 
             // NewPayment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.comboIsDefault);
+            this.Controls.Add(this.textRoutingNumber);
+            this.Controls.Add(this.textAccountNumber);
+            this.Controls.Add(this.textPaymentName);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.button_back);
+            this.Controls.Add(this.button_add);
             this.Controls.Add(this.label1);
             this.Name = "NewPayment";
             this.Text = "NewPayment";
@@ -168,16 +173,16 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button_back;
+        private System.Windows.Forms.Button button_add;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textRoutingNumber;
+        private System.Windows.Forms.TextBox textAccountNumber;
+        private System.Windows.Forms.TextBox textPaymentName;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboIsDefault;
     }
 }

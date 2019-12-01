@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace GroceryBama
 {
-    class ORDERFROM
+    class ORDERED_BY
     {
-        public ORDERFROM() { }
-        public int store_address { get; set; }
+        public ORDERED_BY() { }
+        public int order_by_id { get; set; }
         public int order_id { get; set; }
+        public string buyer_username { get; set; }
     }
 }
