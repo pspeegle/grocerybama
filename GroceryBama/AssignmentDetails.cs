@@ -41,7 +41,37 @@ namespace GroceryBama
 
         private void button_update_status_Click(object sender, EventArgs e)
         {
+            int is_delivered = 0;
+            if (String.IsNullOrWhiteSpace(comboSelect.Text))
+            {
+                MessageBox.Show("Please make a selection.");
+            }
+            if(comboSelect.Text == "Pending")
+            {
+                is_delivered = 0;
+            }
+            else if(comboSelect.Text == "Delivered")
+            {
+                is_delivered = 1;
+            }
+            string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["Default"].ConnectionString;
+            using (SqlConnection _con = new SqlConnection(connectionString))
+            {
+                string query = "UPDATE deliveredBy SET is_delivered = @is_delivered WHERE order_id = @order_id";
+                using (SqlCommand command = new SqlCommand(query, _con))
+                {
+                    command.Parameters.Add("@is_delivered", SqlDbType.Bit).Value = is_delivered;
+                    command.Parameters.Add("@order_id", SqlDbType.Int).Value = Globals.current_order;
+                    _con.Open();
+                    int result = command.ExecuteNonQuery();
+                    _con.Close();
 
+                    if (result < 0)
+                        MessageBox.Show("There was an error.");
+                }
+            }
+            MessageBox.Show("Update successful.");
+            this.Close();
         }
 
         private void button1_Click(object sender, EventArgs e)
