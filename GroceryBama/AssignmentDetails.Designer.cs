@@ -47,6 +47,7 @@
             this.comboSelect.Name = "comboSelect";
             this.comboSelect.Size = new System.Drawing.Size(121, 24);
             this.comboSelect.TabIndex = 87;
+            this.comboSelect.SelectedIndexChanged += new System.EventHandler(this.comboSelect_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -56,6 +57,7 @@
             this.label2.Size = new System.Drawing.Size(95, 17);
             this.label2.TabIndex = 86;
             this.label2.Text = "Select Status:";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // button_update_status
             // 
@@ -88,6 +90,7 @@
             this.textAll.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textAll.Size = new System.Drawing.Size(959, 436);
             this.textAll.TabIndex = 83;
+            this.textAll.TextChanged += new System.EventHandler(this.textAll_TextChanged);
             // 
             // label3
             // 
@@ -98,6 +101,7 @@
             this.label3.Size = new System.Drawing.Size(286, 32);
             this.label3.TabIndex = 82;
             this.label3.Text = "Assignment Details:";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // button1
             // 

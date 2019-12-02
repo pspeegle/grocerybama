@@ -103,5 +103,25 @@ namespace GroceryBama
             textAll.AppendText(String.Format("Store Name: {0}", ta.store_name));
             textAll.AppendText(Environment.NewLine);
         }
+
+        private void comboSelect_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textAll_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

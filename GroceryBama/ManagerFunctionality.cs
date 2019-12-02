@@ -68,7 +68,8 @@ namespace GroceryBama
 
         private void button_orders_Click(object sender, EventArgs e)
         {
-
+            ViewOutstanding form = new ViewOutstanding();
+            form.ShowDialog();
         }
 
         private void button_store_Click(object sender, EventArgs e)
