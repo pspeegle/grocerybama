@@ -161,6 +161,18 @@
     <Compile Include="Manager.Designer.cs">
       <DependentUpon>Manager.cs</DependentUpon>
     </Compile>
+    <Compile Include="ManagerAccountInformation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManagerAccountInformation.Designer.cs">
+      <DependentUpon>ManagerAccountInformation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ManagerFunctionality.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManagerFunctionality.Designer.cs">
+      <DependentUpon>ManagerFunctionality.cs</DependentUpon>
+    </Compile>
     <Compile Include="MANAGES.cs" />
     <Compile Include="NewPayment.cs">
       <SubType>Form</SubType>
@@ -264,6 +276,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Manager.resx">
       <DependentUpon>Manager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManagerAccountInformation.resx">
+      <DependentUpon>ManagerAccountInformation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManagerFunctionality.resx">
+      <DependentUpon>ManagerFunctionality.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NewPayment.resx">
       <DependentUpon>NewPayment.cs</DependentUpon>

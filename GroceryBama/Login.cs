@@ -18,6 +18,7 @@ namespace GroceryBama
         List<ADDRESS> addresses = new List<ADDRESS>();
         List<BUYER> buyers = new List<BUYER>();
         List<GROCERYSTORE> stores = new List<GROCERYSTORE>();
+        GROCERYSTORE temp = new GROCERYSTORE();
         public Login()
         {
             InitializeComponent();
@@ -34,6 +35,7 @@ namespace GroceryBama
             addresses.Clear();
             buyers.Clear();
             stores.Clear();
+            Globals.Persistent_Current = null;
             LoadAll();
             //MessageBox.Show(users.Count().ToString());
             bool matchFound = false;
@@ -69,6 +71,7 @@ namespace GroceryBama
             {
                 DialogResult dialog = new DialogResult();
                 dialog = MessageBox.Show("Error: Invalid Login Information.", "GroceryBama Message", MessageBoxButtons.OK);
+                return;
             }
             if(Globals.Persistent_Current.user_type == "deliverer")
             {
@@ -77,7 +80,39 @@ namespace GroceryBama
             }
             else if(Globals.Persistent_Current.user_type == "manager")
             {
+                string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["Default"].ConnectionString;
+                using (SqlConnection _con = new SqlConnection(connectionString))
+                {
+                    string queryStatement = "SELECT * FROM [GROCERYBAMA1].[dbo].[manages] where username = @username";
 
+                    using (SqlCommand _cmd = new SqlCommand(queryStatement, _con))
+                    {
+                        _cmd.Parameters.Add("@username", SqlDbType.VarChar).Value = Globals.Persistent_Current.username;
+                        DataTable tb = new DataTable();
+
+                        SqlDataAdapter _dap = new SqlDataAdapter(_cmd);
+
+                        _con.Open();
+                        _dap.Fill(tb);
+                        _con.Close();
+                        foreach (DataRow dr in tb.Rows)
+                        {
+                            GROCERYSTORE addStore = new GROCERYSTORE();
+                            addStore.address_id = Int32.Parse(dr["store_address"].ToString());
+                            temp = addStore;
+                        }
+                    }
+                }
+                foreach (var item in stores)
+                {
+                    if (temp.address_id == item.address_id) Globals.Persistent_Store = item;
+                }
+                foreach (var item_address in addresses)
+                {
+                    if (Globals.Persistent_Store.address_id == item_address.id) Globals.Store_Address = item_address;
+                }
+                ManagerFunctionality form = new ManagerFunctionality();
+                form.ShowDialog();
             }
         }
 
