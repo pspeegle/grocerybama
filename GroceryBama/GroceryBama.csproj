@@ -77,6 +77,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="addItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="addItem.Designer.cs">
+      <DependentUpon>addItem.cs</DependentUpon>
+    </Compile>
     <Compile Include="ADDRESS.cs" />
     <Compile Include="AssignmentDetails.cs">
       <SubType>Form</SubType>
@@ -238,12 +244,21 @@
     <Compile Include="ViewCart.Designer.cs">
       <DependentUpon>ViewCart.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewInventory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewInventory.Designer.cs">
+      <DependentUpon>ViewInventory.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewOutstanding.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ViewOutstanding.Designer.cs">
       <DependentUpon>ViewOutstanding.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="addItem.resx">
+      <DependentUpon>addItem.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AssignmentDetails.resx">
       <DependentUpon>AssignmentDetails.cs</DependentUpon>
     </EmbeddedResource>
@@ -324,6 +339,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ViewCart.resx">
       <DependentUpon>ViewCart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewInventory.resx">
+      <DependentUpon>ViewInventory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ViewOutstanding.resx">
       <DependentUpon>ViewOutstanding.cs</DependentUpon>

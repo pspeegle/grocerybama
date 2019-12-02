@@ -74,7 +74,8 @@ namespace GroceryBama
 
         private void button_store_Click(object sender, EventArgs e)
         {
-
+            ViewInventory form = new ViewInventory();
+            form.ShowDialog();
         }
     }
 }
