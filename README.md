@@ -4,10 +4,10 @@
   <p align="center">a grocery-to-home delivery service for GroceryBama.com<p>
   <p align="center">
     <a href="https://github.com/namitoyokota/grocerybama">
-      <img src="https://img.shields.io/badge/backend-SQL-blue" alt="back-end">
+      <img src="https://img.shields.io/badge/frontend-C%23-yellow" alt="front-end">
     </a>
     <a href="https://github.com/namitoyokota/grocerybama">
-      <img src="https://img.shields.io/badge/frontend-C%23-yellow" alt="front-end">
+      <img src="https://img.shields.io/badge/backend-SQL-blue" alt="back-end">
     </a>
   </p>
 </p>
@@ -20,7 +20,7 @@ This application automates the process from shoopping to delivering at grocery s
 ## Back-End
 > The back-end for this software is programmed using SQL along with tools including Windows SQL Server and phpMyAdmin for testing. View the create table file <a href="./src/GroceryBama.sql">here</a>.
 
-<img src="assets/EER-Diagram.png" />
+![EER Diagram](/docs/eer-diagram.png "EER Diagram")
 
 | Table | Attributes |
 | --- | --- |
@@ -42,7 +42,12 @@ This application automates the process from shoopping to delivering at grocery s
 ## Front-End
 > The front-end code for this application is programmed using C#
 
-to be added...
+<p align="center">
+  <img src="./docs/auth.png" alt="User Login" />
+  <img src="./docs/cart.png" alt="Cart" />
+  <img src="./docs/item.png" alt="Find Item" />
+  <img src="./docs/receipt.png" alt="Receipt" />
+</p>
 
 ## Installation
 to be added...
